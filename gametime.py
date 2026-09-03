@@ -2,11 +2,11 @@
 import time
 
 
-class Gametime:
+class GameTime:
 
     def __init__(self):
         self.game_time = 20*60*60 # Starts at 10pm 
-        self.time_scale = 120 #Every 1 seconds is 1 min game time
+        self.time_scale = 120 #Every 1 seconds is 2 min game time
         self.last_time = time.time()
 
     def update(self):
@@ -26,7 +26,7 @@ class Gametime:
         return f"{hours:02d}:{minutes:02d}"
 
 if __name__ == "__main__":
-    game = Gametime()
+    game = GameTime()
     game.update()
     time.sleep(3)
     game.update()

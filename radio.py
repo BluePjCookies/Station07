@@ -35,7 +35,21 @@ class Radio:
         if strength < self.min_signal_strength:
             return None, None
         return transmission, strength
+    
+    def get_state(self):
+        transmission, strength = self.get_signal()
 
+        if transmission is None:
+            return {
+                "frequency": self.current_freq,
+                "signal": None,
+                "strength": 0
+            }
+        return {
+            "frequency": self.current_freq,
+            "signal": transmission.to_dict(),
+            "strength": strength
+        }
 
 
 
