@@ -4,20 +4,20 @@
         "freq" : 40,
         "time" : 2200,
         "content": "THIS IS A TEST MESSAGE",
-        "audio" : "data/audio.mp3"
+        "audio" : "data/audio/audio.mp3"
         },
         {
         "id" : 1,
         "freq" : 60,
         "time" : 2200,
         "content": "THIS IS A TEST MESSAGE",
-        "audio" : "data/audio.mp3"
+        "audio" : "data/audio/audio.mp3"
         },
         {
         "id" : 2,
         "freq" : 90,
         "time" : 2200,
         "content": "THIS IS A TEST MESSAGE",
-        "audio" : "data/audio.mp3"
+        "audio" : "data/audio/audio.mp3"
         }
 ]

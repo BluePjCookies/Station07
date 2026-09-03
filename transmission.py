@@ -11,6 +11,15 @@ class Transmission:
     
     def __str__(self):
         return f"Transmission {self.id}: {self.content}"
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "content": self.content,
+            "freq": self.freq,
+            "audio": self.audio,
+            "time": self.time
+        }
     
 
     

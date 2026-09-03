@@ -38,8 +38,9 @@ class Radio:
 
 
 
-radio = Radio("data/text/transmission.json")
+
 if __name__ == "__main__":
+    radio = Radio("data/text/transmission.json")
     radio.tune(50)
     signal, strength = radio.get_signal()
     if signal:
