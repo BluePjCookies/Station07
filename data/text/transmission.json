@@ -1,23 +1,20 @@
-[
-        {
-        "id" : 0,
-        "freq" : 40,
-        "time" : "22:00",
-        "content": "THIS IS A TEST MESSAGE",
-        "audio" : "data/audio/audio.mp3"
-        },
-        {
-        "id" : 1,
-        "freq" : 60,
-        "time" : "22:00",
-        "content": "THIS IS A TEST MESSAGE",
-        "audio" : "data/audio/audio.mp3"
-        },
-        {
-        "id" : 2,
-        "freq" : 90,
-        "time" : "22:00",
-        "content": "THIS IS A TEST MESSAGE",
-        "audio" : "data/audio/audio.mp3"
-        }
-]
+{
+        "0" : {
+                "content": "THIS IS A TEST MESSAG for id 0",
+                "audio" : "data/audio/audio.mp3",
+                "active" : false,
+                "important" : true
+                },
+        "1" : {
+                "content": "THIS IS A TEST MESSAGE",
+                "audio" : "data/audio/audio.mp3",
+                "active" : false,
+                "important" : true
+                },
+        "2" : {
+                "content": "THIS IS A TEST MESSAGE",
+                "audio" : "data/audio/audio.mp3",
+                "active" : false,
+                "important" : true
+                }
+}

@@ -1,39 +1,40 @@
-from transmission import Transmission
-from utils import load_json, closeness
+
+from utils import get_strength
 
 
 class Radio:
-    def __init__(self, database_path):
-        data = load_json(database_path)
-        self.transmissions = [
-            Transmission(item)
-            for item in data
-        ]
 
+    def __init__(self, transmissions, frequencies):
+        self.current_freq = 0
         self.max_diff = 5
         self.min_signal_strength = 0.1
-        self.current_freq = 0
+        self.frequencies = frequencies
+        self.transmissions = transmissions
 
     def tune(self, freq):
         self.current_freq = freq
 
-    def get_signal(self):  #Returns Transmission object, float or None, None
-        transmission = max(
-            self.transmissions,
-            key=lambda t: closeness(
-                t.freq,
-                self.current_freq,
-                self.max_diff
-            )
+    def get_signal(self):
+
+        frequency = min(
+            self.frequencies,
+            key=lambda f: abs(f.freq - self.current_freq)
         )
-        strength = closeness(
-            transmission.freq,
+
+        strength = get_strength(
+            frequency.freq,
             self.current_freq,
             self.max_diff
         )
-        
+
         if strength < self.min_signal_strength:
-            return None, None
+            return None, 0
+
+        transmission = frequency.get_active_transmission()
+
+        if transmission is None:
+            return None, 0
+
         return transmission, strength
     
     def get_state(self):
@@ -51,13 +52,3 @@ class Radio:
             "strength": strength
         }
 
-
-
-if __name__ == "__main__":
-    radio = Radio("data/text/transmission.json")
-    radio.tune(50)
-    signal, strength = radio.get_signal()
-    if signal:
-        print(signal.content)
-    else:
-        print("NO SIGNAL FOUND")

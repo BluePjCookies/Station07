@@ -27,9 +27,6 @@ class GameTime:
 
 if __name__ == "__main__":
     game = GameTime()
-    game.update()
-    time.sleep(3)
-    game.update()
-    time.sleep(4)
+    time.sleep(7)
     game.update()
     print(game.convert_to_2359())
