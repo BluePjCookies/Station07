@@ -41,9 +41,7 @@ Example output
         "signal": {
             "id": 3,
             "content": "Station 14, do you copy?",
-            "freq": 50,
             "audio": "data/audio/transmission_03.mp3",
-            "time" : "22:00",
             "active" : true
         },
         "strength": 1.0"
