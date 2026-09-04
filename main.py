@@ -17,6 +17,17 @@ def tune_radio():
         "frequency": game.radio.current_freq
     }
 
+@app.route("/api/radio/submit", methods=["POST"])
+def tune_radio():
+    data = request.get_json()
+
+    transmission_id = data["id"] 
+    game.submit_
+
+    return {
+        
+    }
+    
 @app.route("/api/game/state")
 def get_game_state():
 
