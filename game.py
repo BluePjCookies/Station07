@@ -21,7 +21,8 @@ class Game:
         self.time = GameTime()
 
     def submit(self, transmission_id): #submitting transmission id deactivate it and activate the next important id
-        self.transmissions[transmission_id].deactivate()
+        #self.transmissions[transmission_id].deactivate()
+        #I chose not to deactivate this transmission because it will be weird if the transmission suddenly disappears.
 
         for id, transmission in self.transmissions.items():
             if id > transmission_id and transmission.important:
