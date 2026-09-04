@@ -18,15 +18,13 @@ def tune_radio():
     }
 
 @app.route("/api/radio/submit", methods=["POST"])
-def tune_radio():
+def submit_transmission():
     data = request.get_json()
 
-    transmission_id = data["id"] 
-    game.submit_
+    transmission_id = int(data["id"])
+    game.submit(transmission_id)
 
-    return {
-        
-    }
+    return game.get_state()
     
 @app.route("/api/game/state")
 def get_game_state():
