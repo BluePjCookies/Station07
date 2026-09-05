@@ -37,7 +37,7 @@ class Radio:
                 best_strength = strength
 
         if best_strength < self.min_signal_strength:
-            return None, random.random()/10
+            return None, 0
 
         return best, best_strength
     

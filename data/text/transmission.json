@@ -2,7 +2,7 @@
         "0" : {
                 "content": "THIS IS A TEST MESSAG for id 0",
                 "audio" : "data/audio/audio.mp3",
-                "active" : false,
+                "active" : true,
                 "important" : true
                 },
         "1" : {

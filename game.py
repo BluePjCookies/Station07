@@ -1,12 +1,18 @@
+import os
+
 from radio import Radio
 from gametime import GameTime
 from load_data import Transmission, Frequency
 from utils import load_json
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
 class Game:
 
     def __init__(self):
-        data = load_json("data/text/transmission.json")
-        frequencies = load_json("data/text/frequency_map_to_id.json") #static
+        data = load_json(os.path.join(BASE_DIR, "data/text/transmission.json"))
+        frequencies = load_json(os.path.join(BASE_DIR, "data/text/frequency_map_to_id.json")) #static
 
         self.transmissions = {
             int(key): Transmission(key, value)
@@ -29,9 +35,6 @@ class Game:
                 transmission.activate()
                 return
 
-        
-    def update(self):
-        self.time.update()
 
     def get_state(self):
         return {

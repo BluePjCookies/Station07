@@ -4,8 +4,8 @@ import os
 def load_json(path): # easy way to load json scripts (Satisfy file imports requirements)
     
     if not os.path.isfile(path):
-        print(f"Missing path: {path}")
-        return
+        raise Exception(f"No file at {path}")
+        
     
     with open(path, "r") as f:
         return json.load(f)
