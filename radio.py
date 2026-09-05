@@ -1,6 +1,6 @@
 
 from utils import get_strength
-
+import random
 
 class Radio:
 
@@ -37,7 +37,7 @@ class Radio:
                 best_strength = strength
 
         if best_strength < self.min_signal_strength:
-            return None, 0
+            return None, random.random()/10
 
         return best, best_strength
     

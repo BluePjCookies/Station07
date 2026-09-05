@@ -49,4 +49,4 @@ if __name__ == "__main__":
     if signal:
         print(signal.id, signal.content, strength)
     else:
-        print("NO SIGNAL FOUND")
+        print("NO SIGNAL FOUND", strength)
