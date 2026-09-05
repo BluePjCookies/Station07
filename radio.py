@@ -15,27 +15,31 @@ class Radio:
         self.current_freq = freq
 
     def get_signal(self):
+        # Only frequencies that are actually broadcasting can be picked up, so a
+        # silent station never masks a live one that is also within range.
+        best = None
+        best_strength = 0
 
-        frequency = min(
-            self.frequencies,
-            key=lambda f: abs(f.freq - self.current_freq)
-        )
+        for frequency in self.frequencies:
+            transmission = frequency.get_active_transmission()
 
-        strength = get_strength(
-            frequency.freq,
-            self.current_freq,
-            self.max_diff
-        )
+            if transmission is None:
+                continue
 
-        if strength < self.min_signal_strength:
+            strength = get_strength(
+                frequency.freq,
+                self.current_freq,
+                self.max_diff
+            )
+
+            if strength > best_strength:
+                best = transmission
+                best_strength = strength
+
+        if best_strength < self.min_signal_strength:
             return None, 0
 
-        transmission = frequency.get_active_transmission()
-
-        if transmission is None:
-            return None, 0
-
-        return transmission, strength
+        return best, best_strength
     
     def get_state(self):
         transmission, strength = self.get_signal()

@@ -6,13 +6,8 @@ class Transmission:
         self.active = data["active"]
         self.important = data["important"]
 
-    def deactivate(self):
-        self.active = False
     def __str__(self):
         return f"Transmission {self.id}: {self.content}"
-
-    def deactivate(self):
-        self.active = False
 
     def activate(self):
         self.active = True

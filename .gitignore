@@ -1,1 +1,4 @@
 .DS_store
+*.xml
+.claude
+__pycache__
