@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Frequency — Signals Desk</title>
+<style>
+  :root{
+    --bg:            #05070a;
+    --panel-bg:      #070d09;
+    --line-dim:      #144022;
+    --line:          #23a24a;
+    --line-bright:   #4dff8a;
+    --text-dim:      #6fae82;
+    --text:          #cfe9d6;
+    --amber:         #ffb340;
+    --red:           #ff5b4d;
+    --font: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, "Courier New", monospace;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html,body{
+    margin:0; padding:0; height:100%;
+    background:var(--bg);
+    font-family:var(--font);
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+  }
+
+  body{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:28px 16px;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(35,162,74,0.08), transparent 60%),
+      var(--bg);
+  }
+
+  .rig{
+    position:relative;
+    width:100%;
+    max-width:980px;
+  }
+
+  .rig::before{
+    /* scanline texture */
+    content:"";
+    position:absolute; inset:0;
+    pointer-events:none;
+    background:repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0px,
+      rgba(0,0,0,0) 2px,
+      rgba(0,0,0,0.10) 3px
+    );
+    mix-blend-mode:multiply;
+    z-index:5;
+    border-radius:6px;
+  }
+
+  .top-bar{
+    display:flex; align-items:baseline; justify-content:space-between;
+    margin-bottom:10px;
+    color:var(--text-dim);
+    font-size:11px;
+    letter-spacing:.04em;
+  }
+  .top-bar .desk{ color:var(--line); }
+  .top-bar .shift-status{ color:var(--amber); }
+
+  .layout{
+    display:grid;
+    grid-template-columns: 1.55fr 1fr;
+    gap:18px;
+  }
+  @media (max-width: 760px){
+    .layout{ grid-template-columns: 1fr; }
+  }
+
+  .panel{
+    border:1.5px solid var(--line);
+    border-radius:2px;
+    background:
+      linear-gradient(180deg, rgba(35,162,74,0.05), transparent 40%),
+      var(--panel-bg);
+    box-shadow: 0 0 0 1px rgba(35,162,74,0.06), inset 0 0 40px rgba(35,162,74,0.03);
+    padding:18px 20px 20px;
+    position:relative;
+  }
+
+  .panel-label{
+    display:flex; justify-content:space-between; align-items:baseline;
+    margin-bottom:14px;
+  }
+  .panel-label h2{
+    margin:0; font-size:15px; font-weight:600; letter-spacing:.02em; color:var(--line-bright);
+  }
+  .clock{ font-size:14px; color:var(--text); font-variant-numeric:tabular-nums; }
+
+  /* ---------- Frequency panel ---------- */
+
+  .scope{
+    border:1.5px solid var(--line);
+    border-radius:2px;
+    height:150px;
+    background:#020503;
+    position:relative;
+    overflow:hidden;
+    margin-bottom:14px;
+  }
+  .scope svg{ width:100%; height:100%; display:block; }
+  .scope .status-chip{
+    position:absolute; top:8px; left:10px;
+    font-size:10px; letter-spacing:.08em;
+    padding:2px 7px;
+    border:1px solid var(--line-dim);
+    color:var(--text-dim);
+    border-radius:2px;
+    background:rgba(2,5,3,0.7);
+  }
+  .scope .status-chip.locked{ color:var(--bg); background:var(--line-bright); border-color:var(--line-bright); font-weight:700; }
+  .scope .status-chip.detected{ color:var(--amber); border-color:var(--amber); }
+
+  .readout-row{
+    display:flex; align-items:baseline; justify-content:space-between; margin-bottom:6px;
+  }
+  .freq-readout{
+    font-size:34px; font-weight:700; color:var(--line-bright);
+    letter-spacing:.01em; font-variant-numeric:tabular-nums;
+  }
+  .freq-readout small{ font-size:15px; color:var(--text-dim); font-weight:500; margin-left:4px; }
+  .freq-hint{ font-size:10.5px; color:var(--text-dim); text-align:right; line-height:1.5; }
+
+  .dial-row{ margin: 12px 0 16px; }
+  .dial-row .span-label{
+    display:flex; justify-content:flex-end; font-size:11px; color:var(--text-dim); margin-bottom:4px;
+  }
+
+  input[type=range]{
+    -webkit-appearance:none; appearance:none;
+    width:100%; height:2px; background:var(--line-dim);
+    outline:none; cursor:pointer; margin:0;
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;
+    width:14px; height:14px; border-radius:1px;
+    background:var(--line-bright);
+    box-shadow:0 0 8px rgba(77,255,138,.7);
+    cursor:pointer; margin-top:0;
+    border:none;
+  }
+  input[type=range]::-moz-range-thumb{
+    width:14px; height:14px; border-radius:1px; border:none;
+    background:var(--line-bright); box-shadow:0 0 8px rgba(77,255,138,.7); cursor:pointer;
+  }
+  input[type=range]::-moz-range-track{ background:var(--line-dim); height:2px; }
+
+  .meter-label{
+    display:flex; justify-content:space-between; font-size:11px; color:var(--text-dim); margin:14px 0 5px;
+  }
+  .meter-label span.value{ color:var(--line-bright); font-weight:600; }
+  .meter{
+    height:16px; border:1.5px solid var(--line); border-radius:1px;
+    background:#020503; overflow:hidden;
+  }
+  .meter-fill{
+    height:100%; width:0%;
+    background:repeating-linear-gradient(90deg, var(--line-bright) 0 6px, #101f14 6px 8px);
+    transition:width .12s linear;
+  }
+
+  .transmission{
+    margin-top:16px;
+    border-top:1px dashed var(--line-dim);
+    padding-top:14px;
+    display:none;
+  }
+  .transmission.show{ display:block; }
+  .transmission .tx-head{
+    font-size:11px; color:var(--amber); letter-spacing:.06em; margin-bottom:8px;
+  }
+  .transmission .tx-body{
+    font-size:13px; line-height:1.6; color:var(--text);
+    background:#020503; border:1px solid var(--line-dim); padding:10px 12px; border-radius:2px;
+    min-height:44px;
+  }
+  .tx-actions{ display:flex; gap:10px; margin-top:10px; }
+
+  button{
+    font-family:var(--font);
+    font-size:12px; letter-spacing:.03em;
+    padding:8px 14px;
+    border-radius:2px;
+    cursor:pointer;
+    background:transparent;
+    transition:background .15s ease, color .15s ease;
+  }
+  button:focus-visible{ outline:2px solid var(--line-bright); outline-offset:2px; }
+
+  .btn-record{ border:1.5px solid var(--line-bright); color:var(--line-bright); }
+  .btn-record:hover{ background:var(--line-bright); color:#03170a; }
+  .btn-ignore{ border:1.5px solid var(--red); color:var(--red); }
+  .btn-ignore:hover{ background:var(--red); color:#1a0503; }
+
+  .hint-line{ font-size:10.5px; color:var(--text-dim); margin-top:12px; }
+
+  /* ---------- Right column ---------- */
+  .right-col{ display:flex; flex-direction:column; gap:18px; }
+
+  .drop-zone{
+    min-height:120px;
+    border:1.5px dashed var(--line-dim);
+    border-radius:2px;
+    padding:10px;
+    display:flex; flex-direction:column; gap:8px;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .drop-zone.drag-over{ border-color:var(--line-bright); background:rgba(77,255,138,.05); }
+  .drop-zone .placeholder{
+    margin:auto; font-size:11px; color:var(--text-dim); text-align:center; padding:14px 6px;
+  }
+
+  .log-entry{
+    font-size:11.5px; line-height:1.5; color:var(--text-dim);
+    border-left:2px solid var(--line-dim); padding:4px 0 4px 8px;
+  }
+  .log-entry .tag{ color:var(--amber); }
+
+  .cat-card{
+    border:1px solid var(--line-dim);
+    border-radius:2px;
+    padding:8px 10px;
+    background:#020503;
+    cursor:grab;
+    display:flex; flex-direction:column; gap:5px;
+  }
+  .cat-card:active{ cursor:grabbing; }
+  .cat-card.dragging{ opacity:.4; }
+  .cat-card .cat-freq{ font-size:12px; color:var(--line-bright); font-weight:600; }
+  .cat-card .cat-text{ font-size:11px; color:var(--text-dim); line-height:1.4; }
+  .cat-card .cat-actions{ display:flex; justify-content:flex-end; }
+  .cat-card .cat-actions button{
+    font-size:10px; padding:4px 9px; border:1px solid var(--line-dim); color:var(--text-dim);
+  }
+  .cat-card .cat-actions button:hover{ border-color:var(--line-bright); color:var(--line-bright); }
+
+  .panel.small{ padding:16px 18px 18px; }
+  .scroll{ max-height:230px; overflow-y:auto; padding-right:4px; }
+  .scroll::-webkit-scrollbar{ width:6px; }
+  .scroll::-webkit-scrollbar-thumb{ background:var(--line-dim); border-radius:3px; }
+
+  .shift-overlay{
+    position:fixed; inset:0; background:rgba(2,5,3,.92);
+    display:none; align-items:center; justify-content:center; z-index:50;
+    flex-direction:column; text-align:center; padding:20px;
+  }
+  .shift-overlay.show{ display:flex; }
+  .shift-overlay h1{ color:var(--line-bright); font-size:22px; margin:0 0 10px; }
+  .shift-overlay p{ color:var(--text-dim); font-size:13px; max-width:360px; margin:4px 0; }
+  .shift-overlay button{ margin-top:18px; border:1.5px solid var(--line-bright); color:var(--line-bright); padding:10px 20px; }
+  .shift-overlay button:hover{ background:var(--line-bright); color:#03170a; }
+
+  @media (prefers-reduced-motion: reduce){
+    .meter-fill, .drop-zone, button{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="rig">
+  <div class="top-bar">
+    <span class="desk">SIGNALS DESK — NIGHT WATCH</span>
+    <span class="shift-status" id="shiftStatus">SHIFT IN PROGRESS</span>
+  </div>
+
+  <div class="layout">
+
+    <!-- FREQUENCY PANEL -->
+    <div class="panel">
+      <div class="panel-label">
+        <h2>Frequency</h2>
+        <div class="clock" id="clock">10:00 PM</div>
+      </div>
+
+      <div class="scope">
+        <div class="status-chip" id="statusChip">SCANNING</div>
+        <svg viewBox="0 0 400 150" preserveAspectRatio="none">
+          <path id="wavePath" d="" fill="none" stroke="#4dff8a" stroke-width="2"/>
+        </svg>
+      </div>
+
+      <div class="readout-row">
+        <div class="freq-readout" id="freqReadout">96.4<small>MHz</small></div>
+        <div class="freq-hint">← / → to tune · drag to scan</div>
+      </div>
+
+      <div class="dial-row">
+        <div class="span-label">87.0 – 108.0 MHz &nbsp;·&nbsp; 21.0 MHz span</div>
+        <input type="range" id="freqSlider" min="87.0" max="108.0" step="0.1" value="96.4">
+      </div>
+
+      <div class="meter-label">Signal strength <span class="value" id="meterValue">0%</span></div>
+      <div class="meter"><div class="meter-fill" id="meterFill"></div></div>
+
+      <div class="transmission" id="txPanel">
+        <div class="tx-head" id="txHead">DECODING…</div>
+        <div class="tx-body" id="txBody">—</div>
+        <div class="tx-actions">
+          <button class="btn-record" id="btnRecord">Record</button>
+          <button class="btn-ignore" id="btnIgnore">Ignore</button>
+        </div>
+      </div>
+
+      <div class="hint-line">Hold near a strong signal until the channel locks, then log or dismiss the transmission.</div>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="right-col">
+      <div class="panel small">
+        <div class="panel-label"><h2>Submission</h2></div>
+        <div class="drop-zone scroll" id="submissionZone">
+          <div class="placeholder" id="subPlaceholder">Drag a catalogued report here to send it up the chain.</div>
+        </div>
+      </div>
+
+      <div class="panel small">
+        <div class="panel-label"><h2>Catalogue</h2></div>
+        <div class="drop-zone scroll" id="catalogueList">
+          <div class="placeholder" id="catPlaceholder">Recorded transmissions will appear here.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="shift-overlay" id="shiftOverlay">
+  <h1>END OF SHIFT — 06:00</h1>
+  <p id="shiftSummary"></p>
+  <p>Log off and hand the desk to the morning operator.</p>
+  <button id="btnNewShift">Start next shift</button>
+</div>
+
+<script>
+(function(){
+  const FREQ_MIN = 87.0, FREQ_MAX = 108.0, FREQ_STEP = 0.1;
+
+  const STATIONLIST = [
+    { id: 1, freq: 89.4,  bw: 0.35, text: "NUMBER GROUP: 4 7 1 9 2 — REPEAT — 4 7 1 9 2. STANDBY FOR FURTHER.",
+      reply: "Noted. Keep monitoring that band for follow-up groups." },
+    { id: 2, freq: 94.1,  bw: 0.25, text: "VESSEL KESTREL REPORTS CARGO DELAYED. NEW ETA 03:40. PORT AUTHORITY NOT ADVISED.",
+      reply: "Filed. Flag anything else mentioning 'Kestrel'." },
+    { id: 3, freq: 99.8,  bw: 0.20, text: "WEATHER BALLOON TELEMETRY, ALTITUDE 31,000 FT, DRIFTING NORTHEAST. NO CONCERN.",
+      reply: "Low priority, but logged per protocol." },
+    { id: 4, freq: 103.2, bw: 0.15, text: "UNSCHEDULED HANDSHAKE ON A RESTRICTED BAND. ENCRYPTED. ORIGIN UNKNOWN, BEARING 214.",
+      reply: "This one matters. Widen your scan near that frequency and report at once if it repeats." },
+    { id: 5, freq: 106.6, bw: 0.30, text: "LOCAL AMATEUR OPERATOR TESTING A NEW ANTENNA. PLEASE DISREGARD.",
+      reply: "Acknowledged. No action needed on hobbyist traffic." }
+  ];
+  let STATIONS = STATIONLIST;
+
+  let freq = 96.4;
+  let catalogue = [];       // { id, freq, text, reply }
+  let submittedCount = 0;
+  let recordedCount = 0;
+  let lockedStation = null; // currently locked station object
+  let txState = "idle";     // idle | decoding | ready
+  let shiftMinutes = 22*60; // 10:00 PM
+  let shiftEnded = false;
+
+  const freqSlider   = document.getElementById('freqSlider');
+  const freqReadout  = document.getElementById('freqReadout');
+  const meterFill    = document.getElementById('meterFill');
+  const meterValue   = document.getElementById('meterValue');
+  const statusChip   = document.getElementById('statusChip');
+  const wavePath     = document.getElementById('wavePath');
+  const txPanel      = document.getElementById('txPanel');
+  const txHead       = document.getElementById('txHead');
+  const txBody       = document.getElementById('txBody');
+  const btnRecord    = document.getElementById('btnRecord');
+  const btnIgnore    = document.getElementById('btnIgnore');
+  const catalogueList= document.getElementById('catalogueList');
+  const catPlaceholder = document.getElementById('catPlaceholder');
+  const submissionZone = document.getElementById('submissionZone');
+  const subPlaceholder = document.getElementById('subPlaceholder');
+  const clockEl      = document.getElementById('clock');
+  const shiftOverlay = document.getElementById('shiftOverlay');
+  const shiftSummary = document.getElementById('shiftSummary');
+  const shiftStatusEl= document.getElementById('shiftStatus');
+
+ async function request(path, method = "POST", body = null){
+    try {
+        const res = await fetch(path, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: body ? JSON.stringify(body) : null
+        });
+        if (!response.ok) throw new Error('Request failed');
+        return res.body
+    } catch (e) {
+        throw new Error(e)
+    }
+  }
+  async function getTaskData(taskno){
+    const data = await request("INSERT LEVEL PATH", "GET")
+    STATIONS = data.stations
+
+  }
+  function signalAt(f){
+    let best = 0, bestStation = null;
+    for(const s of STATIONS){
+      const d = Math.sqrt((f - s.freq)**2); // distance
+      const v = 100 * s.bw / d
+      if(v > best){ best = v; bestStation = s; }
+    }
+    const noise = Math.random()*3;
+    return { strength: Math.min(100, best + noise), station: best > 40 ? bestStation : null };
+  }
+
+  function updateWave(strength){
+    const t = performance.now()/1000;
+    const cleanliness = 1;              // 0 noisy .. 1 clean
+    const amp = 12 + cleanliness*45;
+    const freqViz = 1.5 + (freq - FREQ_MIN)/(FREQ_MAX-FREQ_MIN)*3; // how "fast" the wave looks
+    let d = "M 0 75 ";
+    for(let x=0; x<=400; x+=4){
+      const phase = (x/400)*Math.PI*2*freqViz + t*2;
+      const jitter = (1-cleanliness) * (Math.random()-0.5) * 26;
+      const y = 75 - Math.sin(phase)*amp + jitter;
+      d += `L ${x} ${y.toFixed(1)} `;
+    }
+    wavePath.setAttribute('d', d);
+  }
+
+  function render(){
+    if(shiftEnded) return;
+    freqReadout.innerHTML = freq.toFixed(1) + '<small>MHz</small>';
+    const { strength, station } = signalAt(freq);
+    meterFill.style.width = strength.toFixed(0) + '%';
+    meterValue.textContent = strength.toFixed(0) + '%';
+    updateWave(strength);
+
+    if(strength > 78){
+      statusChip.textContent = 'LOCKED';
+      statusChip.className = 'status-chip locked';
+      if(txState === 'idle' && station){
+        beginDecode(station);
+      }
+    } else if(strength > 40){
+      statusChip.textContent = 'SIGNAL DETECTED';
+      statusChip.className = 'status-chip detected';
+      if(txState !== 'idle') resetTx();
+    } else {
+      statusChip.textContent = 'SCANNING';
+      statusChip.className = 'status-chip';
+      if(txState !== 'idle') resetTx();
+    }
+    requestAnimationFrame(render);
+  }
+
+  let decodeTimer = null;
+  async function beginDecode(station){
+    lockedStation = station;
+    txState = 'decoding';
+    txPanel.classList.add('show');
+    txHead.textContent = 'DECODING…';
+    // let taskData = await request("NEW TASK PATH", "GET")
+
+    txBody.textContent = scrambled(station.text);
+    btnRecord.disabled = true; btnIgnore.disabled = true;
+    let ticks = 0;
+    clearInterval(decodeTimer);
+    decodeTimer = setInterval(()=>{
+      ticks++;
+      if(ticks < 5){
+        txBody.textContent = scrambled(station.text);
+      } else {
+        clearInterval(decodeTimer);
+        txHead.textContent = 'TRANSMISSION RECEIVED';
+        txBody.textContent = station.text;
+        txState = 'ready';
+        btnRecord.disabled = false; btnIgnore.disabled = false;
+      }
+    }, 160);
+  }
+
+  function scrambled(text){
+    const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789     ";
+    return text.split('').map(ch => ch === ' ' ? ' ' : (Math.random()<0.55 ? chars[Math.floor(Math.random()*chars.length)] : ch)).join('');
+  }
+
+  function resetTx(){
+    clearInterval(decodeTimer);
+    txState = 'idle';
+    lockedStation = null;
+    txPanel.classList.remove('show');
+    btnRecord.disabled = false; btnIgnore.disabled = false;
+  }
+
+  btnRecord.addEventListener('click', ()=>{
+    // record button
+    if(txState !== 'ready' || !lockedStation) return;
+    recordedCount++;
+    catalogue.push({
+      id: 'c'+Date.now()+Math.floor(Math.random()*999),
+      stationId: lockedStation.id
+
+    });
+    console.log(catalogue)
+    renderCatalogue();
+    resetTx();
+  });
+
+  btnIgnore.addEventListener('click', ()=> resetTx());
+
+  function renderCatalogue(){
+    catalogueList.querySelectorAll('.cat-card').forEach(n=>n.remove());
+    catPlaceholder.style.display = catalogue.length ? 'none' : 'block';
+    for(const entry of catalogue){
+      const station = STATIONLIST.find(e => entry.stationId == e.id)
+      const card = document.createElement('div');
+      card.className = 'cat-card';
+      card.draggable = true;
+      card.dataset.id = entry.id;
+      card.innerHTML = `
+        <div class="cat-freq">${station.freq} MHz</div>
+        <div class="cat-text">${station.text}</div>
+        <div class="cat-actions"><button data-id="${entry.id}" class="btn-submit">Submit →</button></div>
+      `;
+      card.addEventListener('dragstart', e=>{
+        card.classList.add('dragging');
+        e.dataTransfer.setData('text/plain', entry.id);
+      });
+      card.addEventListener('dragend', ()=> card.classList.remove('dragging'));
+      catalogueList.appendChild(card);
+    }
+    catalogueList.querySelectorAll('.btn-submit').forEach(b=>{
+      b.addEventListener('click', ()=> submitEntry(b.dataset.id));
+    });
+  }
+  function submitEntry(id){
+    console.log(catalogue)
+    const idx = catalogue.findIndex(e=>e.id===id);
+    if(idx === -1) return;
+    const entry = catalogue[idx];
+    
+    catalogue.splice(idx,1);
+    renderCatalogue();
+    submittedCount++;
+    subPlaceholder.style.display = 'none';
+    const line = document.createElement('div');
+    line.className = 'log-entry';
+    line.innerHTML = `<span class="tag">SUBMISSION</span> — Recording from frequency ${entry.freq} MHz`;
+    submissionZone.appendChild(line);
+    submissionZone.scrollTop = submissionZone.scrollHeight;
+    STATIONS.pop()
+    request("/api/radio/submit", "POST", {id: entry.id})
+  }
+  function chatMessage(sender, content){
+    const line = document.createElement('div');
+    line.className = 'log-entry';
+    line.innerHTML = `<span class="tag">${sender}</span> — ${content}`;
+    submissionZone.appendChild(line);
+  }
+  submissionZone.addEventListener('dragover', e=>{
+    e.preventDefault();
+    submissionZone.classList.add('drag-over');
+  });
+  submissionZone.addEventListener('dragleave', ()=> submissionZone.classList.remove('drag-over'));
+  submissionZone.addEventListener('drop', e=>{
+    e.preventDefault();
+    submissionZone.classList.remove('drag-over');
+    const id = e.dataTransfer.getData('text/plain');
+    submitEntry(id);
+  });
+
+  function setFreq(v){
+    freq = Math.min(FREQ_MAX, Math.max(FREQ_MIN, Math.round(v*10)/10));
+    freqSlider.value = freq;
+  }
+
+  freqSlider.addEventListener('input', ()=> setFreq(parseFloat(freqSlider.value)));
+
+  document.addEventListener('keydown', e=>{
+    if(shiftEnded) return;
+    if(e.key === 'ArrowRight'){ setFreq(freq + FREQ_STEP); e.preventDefault(); }
+    if(e.key === 'ArrowLeft'){ setFreq(freq - FREQ_STEP); e.preventDefault(); }
+  });
+
+  function formatClock(mins){
+    const total = ((mins % (24*60)) + 24*60) % (24*60);
+    let h = Math.floor(total/60);
+    const m = total%60;
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12; if(h === 0) h = 12;
+    return `${h}:${m.toString().padStart(2,'0')} ${ampm}`;
+  }
+
+  function tickClock(){
+    if(shiftEnded) return;
+    shiftMinutes += 2;
+    clockEl.textContent = formatClock(shiftMinutes);
+    
+  }
+
+  function endShift(){
+    shiftEnded = true;
+    shiftStatusEl.textContent = 'SHIFT ENDED';
+    shiftSummary.textContent = `${recordedCount} transmission${recordedCount===1?'':'s'} recorded, ${submittedCount} submitted to control.`;
+    shiftOverlay.classList.add('show');
+  }
+
+  document.getElementById('btnNewShift').addEventListener('click', ()=>{
+    shiftEnded = false;
+    shiftMinutes = 22*60;
+    recordedCount = 0; submittedCount = 0;
+    catalogue = [];
+    renderCatalogue();
+    submissionZone.querySelectorAll('.log-entry').forEach(n=>n.remove());
+    subPlaceholder.style.display = 'block';
+    shiftStatusEl.textContent = 'SHIFT IN PROGRESS';
+    clockEl.textContent = formatClock(shiftMinutes);
+    shiftOverlay.classList.remove('show');
+    resetTx();
+    requestAnimationFrame(render);
+  });
+
+  clockEl.textContent = formatClock(shiftMinutes);
+  setInterval(tickClock, 1500);
+  renderCatalogue();
+  requestAnimationFrame(render);
+})();
+</script>
+
+</body>
+</html>

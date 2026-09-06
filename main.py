@@ -4,7 +4,9 @@ from game import Game
 game = Game()
 
 app = Flask(__name__)
-
+@app.route("/")
+def index():
+    render_template("index.html")
 
 @app.route("/api/radio/tune", methods=["POST"])
 def tune_radio():
