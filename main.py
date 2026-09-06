@@ -20,54 +20,25 @@ def index():
     return app.send_static_file("index.html")
 
 @app.route("/data/audio/<path:filename>")
-def audio(filename):
+def return_audio(filename): #return audio files within this directory. 
     return send_from_directory(os.path.join(BASE_DIR, "data/audio"), filename)
 
-@app.route("/api/radio/tune", methods=["POST"])
-def tune_radio():
-    data = request.get_json()
-
-    freq = data["frequency"]
-
+@app.route("/api/game/task/<int:task_number>")
+def return_frequencies_for_task(task_number): #retrieve frequency : transmission_id key value pair
     with game_lock:
-        game.radio.tune(freq)
+        return game.get_frequency_and_transmission_id(int(task_number))
 
-        return {
-            "frequency": game.radio.current_freq
-        }
-
-@app.route("/api/radio/submit", methods=["POST"])
-def submit_transmission():
-    data = request.get_json()
-
-    transmission_id = int(data["id"])
-
+@app.route("/api/game/transmission/<int:transmission_id>")
+def return_transmission_from_id(transmission_id): #retrieve transmission detail from its id
     with game_lock:
-        game.submit(transmission_id)
-        return game.get_state()
+        return game.get_transmission_from_id(int(transmission_id))
 
-@app.route("/api/game/state")
-def get_game_state():
+@app.route("/api/game/responses/<int:transmission_id>")
+def return_transmission_responses(transmission_id): #returns the txt file for the responses.
+    return send_from_directory(os.path.join(BASE_DIR, "data/text/responses"), f"{transmission_id}.txt")
 
-    with game_lock:
-        return game.get_state()
 
-"""
-Example output
-{
-    "time": "22:00",
-    "radio": {
-        "frequency": 50,
-        "signal": {
-            "id": 3,
-            "content": "Station 14, do you copy?",
-            "audio": "data/audio/transmission_03.mp3",
-            "active" : true
-        },
-        "strength": 1.0"
-    }
-}
-"""
+
 
 if __name__ == "__main__":
     app.run()

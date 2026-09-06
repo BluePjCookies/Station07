@@ -1,0 +1,5 @@
+VERIN: That's just a routine radio check. Nothing to worry about. Keep scanning.VERIN: Good catch. That's something we need to know about. I'll forward it to the relevant team.
+CYRUS: Alright.
+VERIN: That's basically what you're looking for. Anything that could affect operations or requires someone to take action.
+CYRUS: Understood.
+VERIN: Good. Let's try another one.
