@@ -1,7 +1,4 @@
 import os
-
-from radio import Radio
-from gametime import GameTime
 from load_data import Transmission, Frequency
 from utils import load_json
 
@@ -11,45 +8,32 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 class Game:
 
     def __init__(self):
-        data = load_json(os.path.join(BASE_DIR, "data/text/transmission.json"))
+        transmissions = load_json(os.path.join(BASE_DIR, "data/text/transmission.json"))
         frequencies = load_json(os.path.join(BASE_DIR, "data/text/frequency_map_to_id.json")) #static
 
         self.transmissions = {
-            int(key): Transmission(key, value)
-            for key, value in data.items()
-        }
+            int(id): Transmission(id, transmission)
+            for id, transmission in transmissions.items()
+        } #dictionary of transmission_id and transmission object
         self.frequencies = [
-            Frequency(int(freq), self.transmissions[key])
-            for freq, key in frequencies.items()
-        ]
+            Frequency(float(freq), self.transmissions[int(transmission_id)])
+            for freq, transmission_id in frequencies.items()
+        ] #list of frequency objects
 
-        self.radio = Radio(self.transmissions, self.frequencies)
-        self.time = GameTime()
-
-    def submit(self, transmission_id): #submitting transmission id deactivate it and activate the next important id
-        #self.transmissions[transmission_id].deactivate()
-        #I chose not to deactivate this transmission because it will be weird if the transmission suddenly disappears.
-
-        for id, transmission in self.transmissions.items():
-            if id > transmission_id and transmission.important:
-                transmission.activate()
-                return
-
-
-    def get_state(self):
-        return {
-            "time": self.time.convert_to_2359(),
-            "radio": self.radio.get_state()
-        }
-
-
+    def get_transmission_from_id(self, id): #retrieve transmission details from transmission id
+        return self.transmissions[int(id)].to_dict()
+    
+    def get_frequency_and_transmission_id(self, task_number:int): # get array of freq:id corresponding to task_number n -> List(Dict)
+            frequency_and_transmission = []
+            for frequency in self.frequencies:
+                transmission = frequency.get_active_transmission(task_number)
+                if transmission:
+                    new_data = {"frequency": frequency.freq, "transmission id": transmission.id}
+                    frequency_and_transmission.append(new_data)
+    
+            return frequency_and_transmission
 
 if __name__ == "__main__":
     game = Game()
-    game.radio.tune(101)
-    game.transmissions[0].activate() # activating transmission 0 
-    signal, strength = game.radio.get_signal()
-    if signal:
-        print(signal.id, signal.content, strength)
-    else:
-        print("NO SIGNAL FOUND", strength)
+    print(game.get_transmission_from_id(4))
+    print(game.get_frequency_and_transmission_id(2))

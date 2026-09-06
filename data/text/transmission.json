@@ -1,20 +1,26 @@
 {
-        "0" : {
-                "content": "THIS IS A TEST MESSAG for id 0",
-                "audio" : "data/audio/audio.mp3",
-                "active" : true,
-                "important" : true
-                },
         "1" : {
-                "content": "THIS IS A TEST MESSAGE",
-                "audio" : "data/audio/audio.mp3",
-                "active" : false,
-                "important" : true
+                "content": "Relay Two to Central. Radio check. Signal strength is good. No issues to report.",
+                "task" : 1,
+                "important" : false,
+                "nature" : "Relevant operational communication"
                 },
         "2" : {
-                "content": "THIS IS A TEST MESSAGE",
-                "audio" : "data/audio/audio.mp3",
-                "active" : false,
-                "important" : true
+                "content": "Central, this is Relay Five. Heavy rainfall reported in the northern sector. Visibility remains acceptable.",
+                "task" : 1,
+                "important" : false,
+                "nature" : "Routine station check-in"
+                },
+        "3" : {
+                "content": "Relay Four to Central. We've lost contact with the maintenance team at Sector Three. Requesting assistance.",
+                "task" : 1,
+                "important" : true,
+                "nature" : "Relevant operational communication"
+                },
+        "4" : {
+                "content": "Relay Two to Central. Supply convoy has cleared the eastern checkpoint. Delivery is complete. Returning to base",
+                "task" : 2,
+                "important" : false,
+                "nature" : "Routine supply update"
                 }
 }

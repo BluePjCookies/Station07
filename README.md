@@ -10,6 +10,8 @@ Station07/
 │
 ├── utils.py                 # Helper functions
 │
+├── frontend/                # React frontend (UI for tuning radio and reading transmissions)
+│
 └── data/
     ├── audio/               # Transmission audio files
     └── text/
