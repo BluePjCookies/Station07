@@ -22,137 +22,137 @@
                 "task" : 2,
                 "important" : false,
                 "nature" : "Routine supply update"
-                }
-        "4" : {
-                "content": "Relay Two to Central. Supply convoy has cleared the eastern checkpoint. Delivery is complete. Returning to base",
+                },
+        "5" : {
+                "content": "Relay Five to Central. Communications equipment at Sector Four is functioning normally. No faults detected during inspection.",
                 "task" : 2,
                 "important" : false,
-                "nature" : "Routine supply update"
-                }
-        "4" : {
-                "content": "Relay Two to Central. Supply convoy has cleared the eastern checkpoint. Delivery is complete. Returning to base",
+                "nature" : "Routine equipment status"
+                },
+        "6" : {
+                "content": "Relay Three to Central. One member of the maintenance team has been reassigned to the western sector. Replacement personnel will arrive during the next shift.",
                 "task" : 2,
                 "important" : false,
-                "nature" : "Routine supply update"
-                }
-        "4" : {
-                "content": "Relay Two to Central. Supply convoy has cleared the eastern checkpoint. Delivery is complete. Returning to base",
+                "nature" : "Personnel movement update"
+                },
+        "7" : {
+                "content": "Relay Seven to Central. Primary communications relay at Sector Two is experiencing intermittent failures. Secondary relay is operational, but coverage may be reduced.",
                 "task" : 2,
+                "important" : true,
+                "nature" : "Equipment fault report"
+                },
+        "8" : {
+                "content": "Sector Four has completed its scheduled generator rotation with no deviation from the planned sequence.",
+                "task" : 3,
                 "important" : false,
-                "nature" : "Routine supply update"
-                }
-        "4" : {
-                "content": "Relay Two to Central. Supply convoy has cleared the eastern checkpoint. Delivery is complete. Returning to base",
-                "task" : 2,
+                "nature" : "Equipment status"
+                },
+        "9" : {
+                "content": "Sector Six reports continued operation under secondary supply following an unscheduled interruption earlier in the shift.",
+                "task" : 3,
+                "important" : true,
+                "nature" : "Operational status"
+                },
+        "10" : {
+                "content": "Maintenance Team Four has concluded its inspection at Sector Three and is proceeding to the next assigned location.",
+                "task" : 3,
                 "important" : false,
-                "nature" : "Routine supply update"
-                }
-        "4" : {
-                "content": "Relay Two to Central. Supply convoy has cleared the eastern checkpoint. Delivery is complete. Returning to base",
-                "task" : 2,
+                "nature" : "Personnel status"
+                },
+        "11" : {
+                "content": "Relay Three confirms the eastern communications post has completed its scheduled inspection with all systems remaining within normal parameters.",
+                "task" : 4,
                 "important" : false,
-                "nature" : "Routine supply update"
-                }
-        "4" : {
-                "content": "Relay Two to Central. Supply convoy has cleared the eastern checkpoint. Delivery is complete. Returning to base",
-                "task" : 2,
+                "nature" : "Routine status update"
+                },
+        "12" : {
+                "content": "Relay Five confirms the 0200 maintenance check has been completed and the equipment has been returned to normal operation.",
+                "task" : 4,
                 "important" : false,
-                "nature" : "Routine supply update"
-                }
-        "4" : {
-                "content": "Relay Two to Central. Supply convoy has cleared the eastern checkpoint. Delivery is complete. Returning to base",
-                "task" : 2,
+                "nature" : "Timestamp inconsistency"
+                },
+        "13" : {
+                "content": "Relay Seven reports reduced coverage following a temporary loss of the primary communications link at Sector Two.",
+                "task" : 4,
+                "important" : true,
+                "nature" : "Operational issue"
+                },
+        "14" : {
+                "content": "Yeah, we're through the checkpoint. Tell them we'll be back before the next rotation.",
+                "task" : 5,
                 "important" : false,
-                "nature" : "Routine supply update"
-                }
-        "4" : {
-                "content": "Relay Two to Central. Supply convoy has cleared the eastern checkpoint. Delivery is complete. Returning to base",
-                "task" : 2,
+                "nature" : "Routine field communication"
+                },
+        "15" : {
+                "content": "Wait, I thought you were with us. / No. I've been at the station the whole time. / ...Then who's with you?",
+                "task" : 5,
+                "important" : true,
+                "nature" : "Unusual conversation"
+                },
+        "16" : {
+                "content": "The replacement unit's working fine. We're packing the old one up and sending it back with the morning convoy.",
+                "task" : 5,
                 "important" : false,
-                "nature" : "Routine supply update"
-                }
-        "4" : {
-                "content": "Relay Two to Central. Supply convoy has cleared the eastern checkpoint. Delivery is complete. Returning to base",
-                "task" : 2,
+                "nature" : "Routine equipment update"
+                },
+        "17" : {
+                "content": "We're almost back at the checkpoint, so you can let them know we'll be there in a few minutes.",
+                "task" : 6,
                 "important" : false,
-                "nature" : "Routine supply update"
-                }
-        "4" : {
-                "content": "Relay Two to Central. Supply convoy has cleared the eastern checkpoint. Delivery is complete. Returning to base",
-                "task" : 2,
-                "important" : false,
-                "nature" : "Routine supply update"
-                }
-        "4" : {
-                "content": "Relay Two to Central. Supply convoy has cleared the eastern checkpoint. Delivery is complete. Returning to base",
-                "task" : 2,
-                "important" : false,
-                "nature" : "Routine supply update"
-                }
-        "4" : {
-                "content": "Relay Two to Central. Supply convoy has cleared the eastern checkpoint. Delivery is complete. Returning to base",
-                "task" : 2,
-                "important" : false,
-                "nature" : "Routine supply update"
-                }
-        "4" : {
-                "content": "Relay Two to Central. Supply convoy has cleared the eastern checkpoint. Delivery is complete. Returning to base",
-                "task" : 2,
-                "important" : false,
-                "nature" : "Routine supply update"
-                }
-        "4" : {
-                "content": "Relay Two to Central. Supply convoy has cleared the eastern checkpoint. Delivery is complete. Returning to base",
-                "task" : 2,
-                "important" : false,
-                "nature" : "Routine supply update"
-                }
-        "4" : {
-                "content": "Relay Two to Central. Supply convoy has cleared the eastern checkpoint. Delivery is complete. Returning to base",
-                "task" : 2,
-                "important" : false,
-                "nature" : "Routine supply update"
-                }
-        "4" : {
-                "content": "Relay Two to Central. Supply convoy has cleared the eastern checkpoint. Delivery is complete. Returning to base",
-                "task" : 2,
-                "important" : false,
-                "nature" : "Routine supply update"
-                }
-        "4" : {
-                "content": "Relay Two to Central. Supply convoy has cleared the eastern checkpoint. Delivery is complete. Returning to base",
-                "task" : 2,
-                "important" : false,
-                "nature" : "Routine supply update"
-                }
-        "4" : {
-                "content": "Relay Two to Central. Supply convoy has cleared the eastern checkpoint. Delivery is complete. Returning to base",
-                "task" : 2,
-                "important" : false,
-                "nature" : "Routine supply update"
-                }
-        "4" : {
-                "content": "Relay Two to Central. Supply convoy has cleared the eastern checkpoint. Delivery is complete. Returning to base",
-                "task" : 2,
-                "important" : false,
-                "nature" : "Routine supply update"
-                }
-        "4" : {
-                "content": "Relay Two to Central. Supply convoy has cleared the eastern checkpoint. Delivery is complete. Returning to base",
-                "task" : 2,
-                "important" : false,
-                "nature" : "Routine supply update"
-                }
-        "4" : {
-                "content": "Relay Two to Central. Supply convoy has cleared the eastern checkpoint. Delivery is complete. Returning to base",
-                "task" : 2,
-                "important" : false,
-                "nature" : "Routine supply update"
-                }
-        "4" : {
-                "content": "Relay Two to Central. Supply convoy has cleared the eastern checkpoint. Delivery is complete. Returning to base",
-                "task" : 2,
-                "important" : false,
-                "nature" : "Routine supply update"
-                }
+                "nature" : "Routine field communication"
+                },
+        "18" : {
+                "content": "Station 07 is occupied again. / I know. I can see the light.",
+                "task" : 6,
+                "important" : true,
+                "nature" : "Unexplained communication"
+                },
+        "19" : {
+                "content": "New operator. / Same puppeteer.",
+                "task" : 7,
+                "important" : true,
+                "nature" : "Unidentified communication"
+                },
+        "20" : {
+                "content": "Verin, you there? / Yeah. What's wrong? / Someone's on my frequency. / What are they saying? / Ummm / Isaac? / It knows my name.",
+                "task" : 8,
+                "important" : true,
+                "nature" : "Previous operator transmission"
+                },
+        "21" : {
+                "content": "You asked him why you were here. / He didn't answer. / [STATIC] / You thought he was hiding something from you. / He is. / [LONG STATIC] / But not from you. / From himself. / [PAUSE] / He thinks he knows what this place is. / He doesn't. / [STATIC] / He thinks he knows what I am. / He doesn't. / [LONG SILENCE] / Good try Verin.",
+                "task" : 9,
+                "important" : true,
+                "nature" : "Unidentified transmission"
+                },
+        "22" : {
+                "content": "Personnel record. / Cyrus Chia, ALIAS: Cypher. / Signals Operator. / National Service completed. / Civilian application received. / [STATIC] / Application reviewed. / Station 07 assignment approved. / [PAUSE] / Assignment approved before application. / [LONG STATIC] / Candidate accepted. / Candidate suitable. / [TRANSMISSION ENDS]",
+                "task" : 10,
+                "important" : true,
+                "nature" : "Unidentified administrative transmission"
+                },
+        "23" : {
+                "content": "Six listened. / Six asked the same questions. / [STATIC] / Six had so much potential. / [PAUSE] / You do to. / [LONG STATIC] / Don't worry, Cyrus. / You'll understand soon.",
+                "task" : 11,
+                "important" : true,
+                "nature" : "Unidentified communication"
+                },
+        "24" : {
+                "content": "You said it would stop, Verin / It did. / Then why are we still sending people? / Because the agreement, the agreement isn't finished.",
+                "task" : 12,
+                "important" : true,
+                "nature" : "Unidentified conversation"
+                },
+        "25" : {
+                "content": "Cyrus. / You tried. / You really did. / You thought there was a way out. / You thought if you understood the rules, you could break them. / [SHORT STATIC] / But there's a reason this works. / There's a reason I still choose to stay here. / [PAUSE] / You think I don't know they're watching me? / You think I don't know what they're doing? / [STATIC] / Why do you think I stay? / Why do you think I never asked to leave? / [LONG PAUSE] / Nevermind taht. / [STATIC] / Why did you come here? / Why did you keep listening? / Why did you believe Verin? / [PAUSE] / [LONG STATIC] / You think you're Cypher. / [PAUSE] / You're not. / [VERY LONG STATIC] / You were simply the number 7. / I’m sorry it had to come to this. / [TRANSMISSION ENDS]",
+                "task" : 13,
+                "important" : true,
+                "nature" : "Unidentified communication"
+                },
+        "26" : {
+                "content": "Don't worry, Cyrus.[PAUSE] Where you're going... / [SHORT STATIC] / You can see your parents. / [TRANSMISSION ENDS]",
+                "task" : 8,
+                "important" : true,
+                "nature" : "Unknown transmission / Direct communication"
+        }       
 }
