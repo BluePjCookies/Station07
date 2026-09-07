@@ -23,6 +23,10 @@ def index():
 def return_audio(filename): #return audio files within this directory. 
     return send_from_directory(os.path.join(BASE_DIR, "data/audio"), filename)
 
+@app.route(/api/game/start)
+def return_start_txt():
+    return send_from_directory(os.path.join(BASE_DIR, "data/text/preface.txt"))
+
 @app.route("/api/game/task/<int:task_number>")
 def return_frequencies_for_task(task_number): #retrieve frequency : transmission_id key value pair
     with game_lock:
@@ -36,8 +40,6 @@ def return_transmission_from_id(transmission_id): #retrieve transmission detail 
 @app.route("/api/game/responses/<int:transmission_id>")
 def return_transmission_responses(transmission_id): #returns the txt file for the responses.
     return send_from_directory(os.path.join(BASE_DIR, "data/text/responses"), f"{transmission_id}.txt")
-
-
 
 
 if __name__ == "__main__":
