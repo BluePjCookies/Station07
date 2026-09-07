@@ -408,12 +408,13 @@ His shift would run from <b>2300 to 0600.</b>
 <script>
 
 (function(){
-  const dev = true
+  const dev = false
   if(dev){
     document.getElementsByClassName("rig")[0].style.display = "block"
     game()
+    return
   }
-  return
+  
   const stages = document.getElementsByClassName("stage")
   let i = 0
   let prev;
