@@ -1,6 +1,6 @@
 import os
 import threading
-
+from utils import load_json
 from flask import Flask, request, send_from_directory
 from game import Game
 
@@ -23,20 +23,33 @@ def index():
 def return_audio(filename): #return audio files within this directory. 
     return send_from_directory(os.path.join(BASE_DIR, "data/audio"), filename)
 
-@app.route("/api/game/start")
-def return_start_txt():
-    return send_from_directory(os.path.join(BASE_DIR, "data/text/preface.txt"))
+@app.route("/api/game/time/<int:task_number>")
+def return_time(task_number):
+    with game_lock:
+        return load_json("data/time/time.json")[str(task_number)]
 
+"return 23:45"
 @app.route("/api/game/task/<int:task_number>")
 def return_frequencies_for_task(task_number): #retrieve frequency : transmission_id key value pair
     with game_lock:
         return game.get_frequency_and_transmission_id(int(task_number))
-
+"""
+return [{"frequency": frequency.freq:float, "transmission id": transmission.id:int}, ...]
+"""
 @app.route("/api/game/transmission/<int:transmission_id>")
 def return_transmission_from_id(transmission_id): #retrieve transmission detail from its id
     with game_lock:
         return game.get_transmission_from_id(int(transmission_id))
-
+"""
+return {
+            "id": self.id,
+            "content": self.content,
+            "audio": f"data/audio/transmissions/{self.id}.mp3",
+            "task" : self.task,
+            "important" : self.important,
+            "response" : f"data/text/responses/{self.id}.txt"
+        }
+"""
 @app.route("/api/game/responses/<int:transmission_id>")
 def return_transmission_responses(transmission_id): #returns the txt file for the responses.
     return send_from_directory(os.path.join(BASE_DIR, "data/text/responses"), f"{transmission_id}.txt")
