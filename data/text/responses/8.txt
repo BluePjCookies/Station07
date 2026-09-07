@@ -1,0 +1,4 @@
+TIME: 00:10
+VERIN: That's within the normal sequence. Nothing to worry about.
+CYRUS: Alright.
+VERIN: Keep going.

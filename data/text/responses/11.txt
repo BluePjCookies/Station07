@@ -1,0 +1,6 @@
+TIME: 01:43
+VERIN: Routine inspection. Everything looks normal there.
+CYRUS: Alright.
+VERIN: Nothing you need to worry about.
+CYRUS: Got it.
+VERIN: Keep monitoring.
