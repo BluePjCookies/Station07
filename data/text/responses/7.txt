@@ -1,0 +1,14 @@
+TIME: 00:10
+VERIN: Good catch.
+VERIN: If the primary relay is failing, that could affect coverage.
+VERIN: I'll pass it along.
+CYRUS: Alright.
+VERIN: You're getting better at filtering these.
+CYRUS: Yeah. I think I'm starting to understand what you want.
+VERIN: Good.
+VERIN: Keep listening for anything that needs action.
+CYRUS: Understood.
+VERIN: Alright. Let's keep going.
+VERIN: Ready for another one?
+CYRUS: Yeah.
+VERIN: Same process man.
