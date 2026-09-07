@@ -23,7 +23,7 @@ def index():
 def return_audio(filename): #return audio files within this directory. 
     return send_from_directory(os.path.join(BASE_DIR, "data/audio"), filename)
 
-@app.route(/api/game/start)
+@app.route("/api/game/start")
 def return_start_txt():
     return send_from_directory(os.path.join(BASE_DIR, "data/text/preface.txt"))
 
