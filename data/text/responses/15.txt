@@ -1,0 +1,16 @@
+TIME: 02:45
+VERIN: Probably crossed traffic.
+CYRUS: You think?
+VERIN: Could be two teams using the same channel.
+CYRUS: But they sounded like they were talking about each other.
+VERIN: Yeah, that's what it sounded like.
+CYRUS: So... should someone check on them?
+VERIN: If there's an actual problem, they'll report it.
+CYRUS: Right.
+VERIN: But maybe there will be a problem, so thanks for alerting us Cyrus. Continue your scans alright?
+CYRUS: Okay.
+CYRUS: Hopefully nothing weird this time.
+VERIN: You'll have to get used to weird.
+CYRUS: That's reassuring.
+VERIN: I'm serious, though. Radio traffic isn't always clean. People talk over each other, signals get crossed, someone says the wrong thing.
+CYRUS: Got it.

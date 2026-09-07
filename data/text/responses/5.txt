@@ -1,0 +1,4 @@
+TIME: 23:45
+VERIN: Everything's functioning normally, so there's nothing you need to report.
+CYRUS: Alright.
+VERIN: Keep going.

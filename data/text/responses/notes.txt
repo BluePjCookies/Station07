@@ -1,0 +1,5 @@
+1. As part of the lore, users need to access 12 before moving on the 13
+2. Basically every txt after 18 adds in suspense lines (etc. see line 3) 
+[SHORT PAUSE]
+3. Not mentioned, but I'll assume final task time (25.txt) should be set at 06:00HRS
+4. Certain events in [] needs to be implemented for dramatic effects, especially for 25 and 26
