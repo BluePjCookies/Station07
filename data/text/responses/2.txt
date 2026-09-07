@@ -1,1 +1,2 @@
-VERIN: "Weather report. Central already has that information. You can leave it." 
+TIME: 23:00
+VERIN: "Weather report. Central already has that information. You can leave it."

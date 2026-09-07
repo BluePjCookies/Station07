@@ -1,0 +1,10 @@
+TIME: 23:00
+VERIN: Ah got it.
+CYRUS: That's routine?
+VERIN: Yep.
+CYRUS: So do I need to record it next time?
+VERIN: Nope!
+CYRUS: Alright. I think I've got it.
+VERIN: Good. Keep scanning through the frequencies. Trust your instincts.
+CYRUS: Alright. Thanks, Verin.
+VERIN: No problem, Cyrus.

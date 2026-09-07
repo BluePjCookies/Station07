@@ -1,0 +1,8 @@
+TIME: 01:43
+VERIN: Good catch. They're still operating, but they're doing so under secondary supply. I'll follow up on that.
+CYRUS: I wasn't sure if that was something I should report.
+VERIN: That's why you listen for the details.
+CYRUS: Right.
+VERIN: If something has changed from the normal operating state, it's worth flagging.
+CYRUS: Got it.
+VERIN: Don't worry about asking questions, alright? This isn't like the Army. If you're unsure about something, just ask. No point guessing when you can get an answer. Keep monitoring for now.
