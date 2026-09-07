@@ -209,7 +209,9 @@
 
   /* ---------- Right column ---------- */
   .right-col{ display:flex; flex-direction:column; gap:18px; }
-
+  #submissionZone {
+    height: 230px;
+  }
   .drop-zone{
     min-height:120px;
     border:1.5px dashed var(--line-dim);
@@ -269,7 +271,7 @@
 </style>
 </head>
 <body>
-
+<div class="wrapper">
 <div class="rig">
   <div class="top-bar">
     <span class="desk">SIGNALS DESK — NIGHT WATCH</span>
@@ -298,8 +300,8 @@
       </div>
 
       <div class="dial-row">
-        <div class="span-label">87.0 – 108.0 MHz &nbsp;·&nbsp; 21.0 MHz span</div>
-        <input type="range" id="freqSlider" min="87.0" max="108.0" step="0.1" value="96.4">
+        <div class="span-label">118.0 – 137.0 MHz &nbsp;·&nbsp; 19.0 MHz span</div>
+        <input type="range" id="freqSlider" min="118.0" max="137.0" step="0.1" value="118.0">
       </div>
 
       <div class="meter-label">Signal strength <span class="value" id="meterValue">0%</span></div>
@@ -336,17 +338,108 @@
 
   </div>
 </div>
-
+<style>
+  .intro-overlay {
+    width: 100%;
+    transition: 0.5s
+  }
+  .stage {
+    display: none;
+  }
+  .rig {
+    display: none;
+    margin: auto;
+  }
+@media (min-width: 1024px) {
+  .wrapper {
+    width: 80vw
+  }
+}
+</style>
 <div class="shift-overlay" id="shiftOverlay">
   <h1>END OF SHIFT — 06:00</h1>
   <p id="shiftSummary"></p>
   <p>Log off and hand the desk to the morning operator.</p>
   <button id="btnNewShift">Start next shift</button>
 </div>
+<div class="intro-overlay">
+  <div id="stage1" class="stage">
+    <h1>SENTINEL COMMUNICATIONS DIRECTORATE</h1>
+    <h3>REMOTE OPERATIONS DIVISION</h3>
+  </div>
+  <div id="stage2" class="stage">
+    <h3>
+    <span>EMPLOYEE:</span> Cyrus<br/>
+    POSITION: Junior Communications Operator<br/>
+    ASSIGNMENT: Station 07<br/>
+    SHIFT: 2300–0600<br/>
+    </h3>
+  </div>
+  <div id="stage3" class="stage">
+    <h1>SENTINEL COMMUNICATIONS DIRECTORATE</h1>
+    <h3>After completing his National Service as a Signals Operator, Cyrus began looking for work in communications.<br/>
+He wanted something familiar. Something that would allow him to put the skills he had spent the past two years learning to use.<br/>
+A few weeks later, he found a position with the Sentinel Communications Directorate (SCD).
+</h3>
+  </div>
+  <div id="stage4" class="stage">
+    
+    <h3>The SCD operates a network of communications stations across remote areas, where operators monitor radio traffic and maintain contact with central command.<br>
+The work is mostly routine.<br/>
+Monitor assigned frequencies.<br/>
+Record relevant transmissions.<br/>
+Report anything important.<br/>
+</h3>
+  </div>
+  <div id="stage5" class="stage">
+    
+    <h3>For his first assignment, Cyrus was posted to Station 07, one of the SCD's remote communications stations.<br/>
+His shift would run from <b>2300 to 0600.</b>
+</h3>
+  </div>
+  <div id="stage6" class="stage">
+    <h1>23:00</h1>
+    <h2>Station 07</h2>
+    <h3>Shift Commencement</h3>
+  </div>
 
+</div>
+</div>
 <script>
+
 (function(){
-  const FREQ_MIN = 87.0, FREQ_MAX = 108.0, FREQ_STEP = 0.1;
+  const dev = false
+  if(dev){
+    document.getElementsByClassName("rig")[0].style.display = "block"
+    game()
+    return
+  }
+  
+  const stages = document.getElementsByClassName("stage")
+  let i = 0
+  let prev;
+  let stageTimer = setInterval(() => {
+    
+    if(i == 5){
+      setTimeout(() => {
+        document.getElementsByClassName("rig")[0].style.display = "block"
+  
+        game()
+        clearTimeout(stageTimer)
+        stages[i-1].style.display = "none";
+      }, 5000)
+      
+    }
+    stages[i].style.display = "block";
+    if(i != 0){
+      stages[i-1].style.display = "none";
+    }
+    i++;
+  }, 5000)
+  
+}())
+function game (){
+  const FREQ_MIN = 118.0, FREQ_MAX = 137.0, FREQ_STEP = 0.1;
 
   const STATIONLIST = [
     { id: 1, freq: 89.4,  bw: 0.35, text: "NUMBER GROUP: 4 7 1 9 2 — REPEAT — 4 7 1 9 2. STANDBY FOR FURTHER.",
@@ -360,9 +453,10 @@
     { id: 5, freq: 106.6, bw: 0.30, text: "LOCAL AMATEUR OPERATOR TESTING A NEW ANTENNA. PLEASE DISREGARD.",
       reply: "Acknowledged. No action needed on hobbyist traffic." }
   ];
-  let STATIONS = STATIONLIST;
-
-  let freq = 96.4;
+  const STATION_BANDWIDTH = 0.3; // constant across every station
+  let STATIONS = []; // nothing broadcasts until setupTask() brings stations online
+  let locked = true
+  let freq = 118;
   let catalogue = [];       // { id, freq, text, reply }
   let submittedCount = 0;
   let recordedCount = 0;
@@ -370,7 +464,7 @@
   let txState = "idle";     // idle | decoding | ready
   let shiftMinutes = 22*60; // 10:00 PM
   let shiftEnded = false;
-
+  let currentTask = 0;
   const freqSlider   = document.getElementById('freqSlider');
   const freqReadout  = document.getElementById('freqReadout');
   const meterFill    = document.getElementById('meterFill');
@@ -382,7 +476,7 @@
   const txBody       = document.getElementById('txBody');
   const btnRecord    = document.getElementById('btnRecord');
   const btnIgnore    = document.getElementById('btnIgnore');
-  const catalogueList= document.getElementById('catalogueList');
+  const catalogueList = document.getElementById('catalogueList');
   const catPlaceholder = document.getElementById('catPlaceholder');
   const submissionZone = document.getElementById('submissionZone');
   const subPlaceholder = document.getElementById('subPlaceholder');
@@ -390,25 +484,18 @@
   const shiftOverlay = document.getElementById('shiftOverlay');
   const shiftSummary = document.getElementById('shiftSummary');
   const shiftStatusEl= document.getElementById('shiftStatus');
-
- async function request(path, method = "POST", body = null){
-    try {
-        const res = await fetch(path, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: body ? JSON.stringify(body) : null
-        });
-        if (!response.ok) throw new Error('Request failed');
-        return res.body
-    } catch (e) {
-        throw new Error(e)
-    }
+  
+ async function request(path, method = "GET", body = null){
+    const res = await fetch(path, {
+        method: method,
+        headers: body ? { 'Content-Type': 'application/json' } : undefined,
+        body: body ? JSON.stringify(body) : null
+    });
+    if (!res.ok) throw new Error(`Request failed: ${method} ${path} (${res.status})`);
+    const contentType = res.headers.get('content-type') || '';
+    return contentType.includes('application/json') ? res.json() : res.text();
   }
-  async function getTaskData(taskno){
-    const data = await request("INSERT LEVEL PATH", "GET")
-    STATIONS = data.stations
-
-  }
+  
   function signalAt(f){
     let best = 0, bestStation = null;
     for(const s of STATIONS){
@@ -434,29 +521,129 @@
     }
     wavePath.setAttribute('d', d);
   }
+  async function setupTask(taskid){
+    updateWave(0);
+    let hydratedStations = [];
+    let importantStation = null;
 
+    try{
+      // /api/game/task/<task_number> returns a LIST of
+      // { "frequency": <float>, "transmission_id": <int> } objects.
+      const freqList = await request(`/api/game/task/${taskid}`, 'GET');
+
+      // Hydrate each transmission_id into a full station object via
+      // /api/game/transmission/<transmission_id>. Transmission.to_dict()
+      // gives us "content" (the decoded text) and "important" (whether
+      // this is the real target vs. a decoy). Bandwidth is constant for
+      // every station, so it's not part of the payload.
+      hydratedStations = await Promise.all((freqList || []).map(async (entry) => {
+        const transmissionId = entry.transmission_id ?? entry['transmission id'];
+        const detail = await request(`/api/game/transmission/${transmissionId}`, 'GET');
+        return {
+          id: transmissionId,
+          freq: entry.frequency,
+          bw: STATION_BANDWIDTH,
+          text: detail.content,
+          important: !!detail.important
+        };
+      }));
+
+      importantStation = hydratedStations.find(s => s.important) || null;
+    } catch(e){
+      console.warn('Could not load task', taskid, e);
+     
+    }
+
+    // Stations stay silent while the intro plays — signalAt() finds nothing
+    // to lock onto as long as STATIONS is empty.
+    STATIONS = [];
+
+    try{
+      // /api/game/responses/<id> is keyed by transmission_id (it's just
+      // Transmission.to_dict()'s own "response" path), not the task
+      // number — so we fetch it using the important station's id. It's
+      // served as a static .txt file, so this comes back as plain text.
+      // The first line sets the shift clock for this task; the remaining
+      // "sender: content" lines are the intro chat script.
+      
+
+      await playScript(taskid);
+
+    } catch(e){
+      console.warn('Could not load scripted intro for task', taskid, e);
+    }
+
+    // Script has finished (or failed to load) — stations go live and the
+    // player can start hunting for the right one.
+    locked = false
+    STATIONS = hydratedStations.length ? hydratedStations : STATIONLIST;
+    console.log(STATIONS)
+    return STATIONS;
+  }
+
+  // Plays each script line 2s apart, resolving once the last line has shown.
+  function playScript(taskId){
+    return new Promise(resolve => {
+      
+      request(`/api/game/responses/${taskId}`, 'GET').then((data) => {
+        const lines = data.split("\n").map(line => line.trim())
+        const [clockLine, ...scriptLines] = lines;
+        console.log(lines)
+        clockEl.textContent = clockLine
+
+        const script = scriptLines.map(line => {
+          const [sender, ...rest] = line.split(":");
+          return { sender: sender.trim(), content: rest.join(":").trim() };
+        });
+        if(!script.length){ resolve(); return; }
+        let lineNo = 0;
+        const showNext = () => {
+          chatMessage(script[lineNo].sender, script[lineNo].content);
+          lineNo++;
+          if(lineNo < script.length){
+            setTimeout(showNext, 2000);
+          } else {
+            resolve();
+          }
+        };
+        showNext();
+        })
+      
+    });
+  }
+
+ 
+
+  
   function render(){
     if(shiftEnded) return;
     freqReadout.innerHTML = freq.toFixed(1) + '<small>MHz</small>';
     const { strength, station } = signalAt(freq);
     meterFill.style.width = strength.toFixed(0) + '%';
     meterValue.textContent = strength.toFixed(0) + '%';
-    updateWave(strength);
-
-    if(strength > 78){
-      statusChip.textContent = 'LOCKED';
+    
+    if(locked){
+      statusChip.textContent = 'DISABLED';
       statusChip.className = 'status-chip locked';
-      if(txState === 'idle' && station){
-        beginDecode(station);
-      }
-    } else if(strength > 40){
-      statusChip.textContent = 'SIGNAL DETECTED';
-      statusChip.className = 'status-chip detected';
-      if(txState !== 'idle') resetTx();
     } else {
-      statusChip.textContent = 'SCANNING';
-      statusChip.className = 'status-chip';
-      if(txState !== 'idle') resetTx();
+      updateWave(strength);
+      if(strength > 78){
+        statusChip.textContent = 'LOCKED';
+        statusChip.className = 'status-chip locked';
+        if(txState === 'idle' && station){
+          beginDecode(station);
+        }
+      } else if(strength > 40){
+        statusChip.textContent = 'SIGNAL DETECTED';
+        statusChip.className = 'status-chip detected';
+        if(txState !== 'idle') resetTx();
+      } else {
+        statusChip.textContent = 'SCANNING';
+        statusChip.className = 'status-chip';
+        if(txState !== 'idle') resetTx();
+      }
+      //timeEl.textContent = time
+      
     }
     requestAnimationFrame(render);
   }
@@ -506,10 +693,8 @@
     recordedCount++;
     catalogue.push({
       id: 'c'+Date.now()+Math.floor(Math.random()*999),
-      stationId: lockedStation.id
-
+      station: { ...lockedStation } // snapshot: id, freq, bw, text, reply
     });
-    console.log(catalogue)
     renderCatalogue();
     resetTx();
   });
@@ -520,7 +705,7 @@
     catalogueList.querySelectorAll('.cat-card').forEach(n=>n.remove());
     catPlaceholder.style.display = catalogue.length ? 'none' : 'block';
     for(const entry of catalogue){
-      const station = STATIONLIST.find(e => entry.stationId == e.id)
+      const station = entry.station;
       const card = document.createElement('div');
       card.className = 'cat-card';
       card.draggable = true;
@@ -541,29 +726,49 @@
       b.addEventListener('click', ()=> submitEntry(b.dataset.id));
     });
   }
+
   function submitEntry(id){
-    console.log(catalogue)
     const idx = catalogue.findIndex(e=>e.id===id);
     if(idx === -1) return;
     const entry = catalogue[idx];
-    
+
     catalogue.splice(idx,1);
     renderCatalogue();
-    submittedCount++;
     subPlaceholder.style.display = 'none';
+
+    // The frequency has been dealt with either way — take it off the air.
+    STATIONS = STATIONS.filter(s => s.id !== entry.station.id);
+
+    submittedCount++;
+    // Correctness is known entirely client-side from the transmission's
+    // own "important" flag (fetched back in setupTask) — the backend has
+    // no submit/grading route, so this never touches the network.
+    logSubmissionResult(entry.station);
+  }
+
+  async function logSubmissionResult(station){
     const line = document.createElement('div');
     line.className = 'log-entry';
-    line.innerHTML = `<span class="tag">SUBMISSION</span> — Recording from frequency ${entry.freq} MHz`;
+    if(station.important){
+      line.innerHTML = `<span class="tag" style="color:var(--line-bright)">CONFIRMED</span> — ${station.freq} MHz was the correct transmission.`;
+      await playScript(station.id)
+      currentTask++;
+      await setupTask(currentTask)
+    } else {
+      playScript(station.id)
+      //line.innerHTML = `<span class="tag" style="color:var(--red)">WRONG SIGNAL</span> — ${station.freq} MHz wasn't the one control is after.`;
+    }
     submissionZone.appendChild(line);
     submissionZone.scrollTop = submissionZone.scrollHeight;
-    STATIONS.pop()
-    request("/api/radio/submit", "POST", {id: entry.id})
   }
   function chatMessage(sender, content){
     const line = document.createElement('div');
     line.className = 'log-entry';
     line.innerHTML = `<span class="tag">${sender}</span> — ${content}`;
     submissionZone.appendChild(line);
+
+    // Force the scrollbar to the very bottom
+    submissionZone.scrollTop = submissionZone.scrollHeight;
   }
   submissionZone.addEventListener('dragover', e=>{
     e.preventDefault();
@@ -590,20 +795,14 @@
     if(e.key === 'ArrowLeft'){ setFreq(freq - FREQ_STEP); e.preventDefault(); }
   });
 
-  function formatClock(mins){
-    const total = ((mins % (24*60)) + 24*60) % (24*60);
-    let h = Math.floor(total/60);
-    const m = total%60;
-    const ampm = h >= 12 ? 'PM' : 'AM';
-    h = h % 12; if(h === 0) h = 12;
-    return `${h}:${m.toString().padStart(2,'0')} ${ampm}`;
-  }
+  
+
+  
 
   function tickClock(){
     if(shiftEnded) return;
     shiftMinutes += 2;
     clockEl.textContent = formatClock(shiftMinutes);
-    
   }
 
   function endShift(){
@@ -622,17 +821,18 @@
     submissionZone.querySelectorAll('.log-entry').forEach(n=>n.remove());
     subPlaceholder.style.display = 'block';
     shiftStatusEl.textContent = 'SHIFT IN PROGRESS';
-    clockEl.textContent = formatClock(shiftMinutes);
+    
     shiftOverlay.classList.remove('show');
     resetTx();
     requestAnimationFrame(render);
   });
 
-  clockEl.textContent = formatClock(shiftMinutes);
-  setInterval(tickClock, 1500);
+  
+  
   renderCatalogue();
+  setupTask(1);
   requestAnimationFrame(render);
-})();
+}
 </script>
 
 </body>
