@@ -12,7 +12,7 @@ game = Game()
 # process would otherwise get its own Game and players would flip between them).
 game_lock = threading.Lock()
 
-app = Flask(__name__, static_folder="frontend", static_url_path="")
+app = Flask(__name__, static_folder="template", static_url_path="")
 
 
 @app.route("/")
