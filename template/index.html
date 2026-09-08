@@ -301,7 +301,7 @@
 
       <div class="dial-row">
         <div class="span-label">100.0 – 150.0 MHz &nbsp;·&nbsp; 50.0 MHz span</div>
-        <input type="range" id="freqSlider" min="100.0" max="150.0" step="0.1" value="118.0">
+        <input type="range" id="freqSlider" min="100.0" max="150.0" step="0.1" value="100.0">
       </div>
 
       <div class="meter-label">Signal strength <span class="value" id="meterValue">0%</span></div>
@@ -453,7 +453,7 @@ function game (){
     { id: 5, freq: 106.6, bw: 0.30, text: "LOCAL AMATEUR OPERATOR TESTING A NEW ANTENNA. PLEASE DISREGARD.",
       reply: "Acknowledged. No action needed on hobbyist traffic." }
   ];
-  const STATION_BANDWIDTH = 0.3; // constant across every station
+  const STATION_BANDWIDTH = 0.45; // constant across every station
   let STATIONS = []; // nothing broadcasts until setupTask() brings stations online
   let locked = true
   let freq = 100;
@@ -609,11 +609,9 @@ function game (){
           chatMessage(script[lineNo].sender, script[lineNo].content);
           lineNo++;
           if(lineNo < script.length){
-            if(dev == true){
-              setTimeout(showNext, 100);
-            } else {
-              setTimeout(showNext, 2000);
-            }
+            
+              setTimeout(showNext, 200);
+            
             
           } else {
             resolve();
@@ -626,7 +624,29 @@ function game (){
   }
 
  
+  function playAudio(station){
+    const audio = new Audio(`/data/audio/${station.id}.m4a`)
+    audio.play()
+    const timer = setInterval(() => {
+      txBody.textContent = scrambled(station.text);
+    }, 160)
+    audio.addEventListener('ended', () => {
+      clearInterval(timer)
+      txHead.textContent = 'TRANSMISSION RECEIVED';
+      txBody.textContent = station.text;
+      txState = 'ready';
+      btnRecord.disabled = false; btnIgnore.disabled = false;
+      // console.log("Playback completed.");
+    });
+    let decodeTimer = null;
+    lockedStation = station;
+    txState = 'decoding';
+    txPanel.classList.add('show');
+    txHead.textContent = 'DECODING…';
+    
+    btnRecord.disabled = true; btnIgnore.disabled = true;
 
+  }
   
   function render(){
     if(shiftEnded) return;
@@ -644,7 +664,8 @@ function game (){
         statusChip.textContent = 'LOCKED';
         statusChip.className = 'status-chip locked';
         if(txState === 'idle' && station){
-          beginDecode(station);
+         playAudio(station)
+          
         }
       } else if(strength > 40){
         statusChip.textContent = 'SIGNAL DETECTED';
@@ -661,32 +682,7 @@ function game (){
     requestAnimationFrame(render);
   }
 
-  let decodeTimer = null;
-  async function beginDecode(station){
-    lockedStation = station;
-    txState = 'decoding';
-    txPanel.classList.add('show');
-    txHead.textContent = 'DECODING…';
-    // let taskData = await request("NEW TASK PATH", "GET")
-
-    txBody.textContent = scrambled(station.text);
-    btnRecord.disabled = true; btnIgnore.disabled = true;
-    let ticks = 0;
-    clearInterval(decodeTimer);
-    decodeTimer = setInterval(()=>{
-      ticks++;
-      if(ticks < 5){
-        txBody.textContent = scrambled(station.text);
-      } else {
-        clearInterval(decodeTimer);
-        txHead.textContent = 'TRANSMISSION RECEIVED';
-        txBody.textContent = station.text;
-        txState = 'ready';
-        btnRecord.disabled = false; btnIgnore.disabled = false;
-      }
-    }, 160);
-  }
-
+  
   function scrambled(text){
     const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789     ";
     return text.split('').map(ch => ch === ' ' ? ' ' : (Math.random()<0.55 ? chars[Math.floor(Math.random()*chars.length)] : ch)).join('');
