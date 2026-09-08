@@ -1,8 +1,7 @@
 TIME: 03:45
 CYRUS: Verin?
 VERIN: Yeah?
-CYRUS: What does "same puppeteer" mean?
-[SHORT PAUSE.]
+CYRUS: What does "same puppeteer" mean?...
 VERIN: Where did you hear that?
 CYRUS: The transmission, that I just sent you.
 VERIN: I didn’t hear that.
@@ -10,23 +9,19 @@ CYRUS: What?
 VERIN: It's probably nothing.
 CYRUS: Are you gaslighting me?
 VERIN: No?
-CYRUS: Really?
-[SHORT SILENCE.]
+CYRUS: Really?...
 VERIN: Are you questioning me?
 CYRUS: Didn’t you say I can ask anything?
 VERIN: …Yeah.
-CYRUS: Has someone worked here before me?
-[LONG PAUSE.]
+CYRUS: Has someone worked here before me?...
 VERIN: Of course.
 CYRUS: Who?
 VERIN: That's not relevant to your assignment.
 CYRUS: Why not?
 VERIN: Because you're here now.
 CYRUS: That's not an answer.
-VERIN: It's the answer you're getting.
-[SILENCE.]
+VERIN: It's the answer you're getting...
 VERIN: Keep monitoring. We have it.
 CYRUS: I don’t feel like it. Wait, what do you mean b—
 VERIN: This is a job you took. I did not force you to be here.
-CYRUS: …Alright.
-[The radio remains silent.]
+CYRUS: …Alright..

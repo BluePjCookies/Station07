@@ -1,0 +1,27 @@
+TIME: 23:00
+Cyrus sits down at the communications desk.
+CYRUS: Alright...
+VERIN: Cyrus? You there?
+CYRUS: Yeah. Loud and clear.
+VERIN: Good. How's the station treating you?
+CYRUS: It's... quieter than I expected.
+VERIN: You'll get used to that. Most of the work happens through the radio anyway.
+CYRUS: Right.
+VERIN: You came over from Signals, didn't you?
+CYRUS: Yeah. Just finished my service.
+VERIN: That explains why they thought you'd be a good fit.
+CYRUS: Hopefully.
+VERIN: Don't worry. I'll walk you through everything. If you run into something you're unsure about, just send it over to me.
+CYRUS: Got it.
+VERIN: Better to ask than guess.
+CYRUS: Understood.
+VERIN: Your job tonight is pretty simple. You'll be monitoring the assigned radio frequencies and looking out for anything that needs to be reported.
+CYRUS: And I just record anything important?
+VERIN: Exactly. Most of what you'll hear is routine traffic. Don't worry about those.
+CYRUS: Alright.
+VERIN: Just move the slider around. It'll show you where we're picking up interference. All you need to do is scan, find the signal, and listen.
+CYRUS: That's it?
+VERIN: That's it.
+CYRUS: Sounds easy enough.
+VERIN: You'll be fine.
+VERIN: All right, I have activated your system. Go ahead. Give it a try. Send me something.

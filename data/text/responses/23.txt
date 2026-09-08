@@ -3,8 +3,7 @@ CYRUS: It said six.
 VERIN: Yes.
 CYRUS: Six people huh?
 VERIN: That's what it said.
-CYRUS: It didn’t but you confirmed it. Six people before me.
-[SHORT PAUSE.]
+CYRUS: It didn’t but you confirmed it. Six people before me...
 VERIN: You're making a connection.
 CYRUS: Because there is one.
 VERIN: Go on.
@@ -12,18 +11,15 @@ CYRUS: Isaac was one of them.
 VERIN: Yes.
 CYRUS: There were five before him.
 VERIN: Yes.
-CYRUS: And then me.
-[SILENCE.]
+CYRUS: And then me...
 CYRUS: Seven.
-VERIN: Seven. That's why it's Station 07.
-[SHORT PAUSE.]
+VERIN: Seven. That's why it's Station 07...
 VERIN: Maybe.
 CYRUS: Don't. Don't give me another half-answer.
 VERIN: I'm not Cypher.
 CYRUS: You are. You've been doing it all night.
 VERIN: And Cypher,  you've been accepting them all night.
-CYRUS: Not anymore.
-[SILENCE.]
+CYRUS: Not anymore...
 CYRUS: I'm number seven.
 VERIN: Yes.
 CYRUS: What happened to the other six?
@@ -33,9 +29,7 @@ VERIN: Does that really matter, Cypher?
 CYRUS: STOP USING THAT NAME, YOU HAVE NO RIGHT TO USE THAT NAME. AND YES IT BLOODY MATTERS.
 VERIN: Oh I struck a nerve huh?
 CYRUS: Because if six people came here before me, and none of them are here now…
-[CYRUS STOPS.]
-CYRUS: Oh God.
-[LONG SILENCE.]
+CYRUS: Oh God...
 CYRUS: I'm going to die here.
 VERIN: That's what you've decided?
 CYRUS: You knew.
@@ -45,45 +39,35 @@ CYRUS: You knew.
 VERIN: There's a difference.
 CYRUS: Stop lying to me!
 VERIN: I'm not lying.
-CYRUS: Then tell me I'm wrong.
-[SILENCE.]
+CYRUS: Then tell me I'm wrong..
 CYRUS: Tell me I'm wrong, Verin.
-[LONG SILENCE.]
-VERIN: I can't.
+VERIN: ...I can't.
 CYRUS: ...
 CYRUS: I don't want to die.
-[SILENCE.]
-CYRUS: I don't want to die here. I don't want to become some bloody number on a list. I just wanted a job, to help Ma. I finished my service. I thought I was finally done.
-[SHORT PAUSE.]
-CYRUS: And you sent me here. Knowing this could happen.
+CYRUS: I don't want to die here! I don't want to become some bloody number on a list! I just wanted a job, to help Ma. I finished my service. I thought I was finally done.
+CYRUS: ..And you sent me here. Knowing this could happen.
 VERIN: Yes.
 CYRUS: Why?
 VERIN: Because you were suitable, I told you.
 CYRUS: Stop saying that!
 VERIN: Why?
 CYRUS: Because I'm not a tool, I’m a human!
-[LONG SILENCE.]
-VERIN: I never said you were.
+VERIN: ..I never said you were.
 CYRUS: You don't have to. You sent six people here before me. You watched them disappear. And when you needed another one, you found me.
-[SILENCE.]
 CYRUS: I'm just the next one.
 VERIN: Yeap.
-[LONG PAUSE.]
 CYRUS: How can you say that so calmly?
 VERIN: Because panicking doesn't change the situation.
 CYRUS: You don't care.
 VERIN: That's not true.
-CYRUS: Then what do you care about?
-[SILENCE.]
+CYRUS: Then what do you care about?..
 VERIN: Understanding it. Keep listening.
 CYRUS: That's all you ever say.
 VERIN: Because it's what you're good at.
-CYRUS: And when I'm not useful anymore?
-[LONG SILENCE.]
+CYRUS: And when I'm not useful anymore?...
 VERIN: You're asking the wrong question.
 CYRUS: Then what's the right one?
 VERIN: Why were you useful in the first place?
-[SILENCE.]
 CYRUS: ...
 CYRUS: You said my background made me useful.
 VERIN: It did.
@@ -97,10 +81,8 @@ CYRUS: What does that mean?
 VERIN: You'll figure it out.
 CYRUS: You really think I'm going to keep doing this?
 VERIN: You're still listening.
-[LONG SILENCE.]
 CYRUS: ...
 CYRUS: You know what? I don't believe anything you say anymore.
-[SHORT PAUSE.]
 VERIN: Good.
 CYRUS: Are you smiling?
 VERIN: I'm not.
@@ -115,5 +97,4 @@ CYRUS: Verin...
 VERIN: Yeah?
 CYRUS: If I'm number seven...
 CYRUS: ...what happens after seven?
-[VERY LONG SILENCE.]
 VERIN: You’re a smart kid, you can figure it out. Gosh what a shame.

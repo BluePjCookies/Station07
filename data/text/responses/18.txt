@@ -7,8 +7,7 @@ CYRUS: What?
 VERIN: Just don't.
 CYRUS: Station 07 is me, right? 
 VERIN: Yea.
-CYRUS: How would they even know someone was here?
-[SHORT PAUSE] 
+CYRUS: How would they even know someone was here?...
 VERIN: I don't know.
 CYRUS: You don't know?
 VERIN: No.
@@ -18,8 +17,7 @@ CYRUS: Why not?
 VERIN: We need you there.
 CYRUS: We?
 VERIN: Keep monitoring, Cyrus.
-CYRUS: What do you mean “We”?
-[A SHORT SILENCE.]
+CYRUS: What do you mean “We”?...
 VERIN: Yeah “We” as in the SCD. I'll stay on the line. You're doing fine, Cyrus.
 CYRUS: Okay.
 VERIN: Keep listening.

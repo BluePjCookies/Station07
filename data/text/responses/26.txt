@@ -1,26 +1,23 @@
 TIME: 23:00
 STATION 08
-[The screen fades in.]
-[The communications room.]
-[Rain can be heard outside.]
-[The same equipment.]
-[The same desk.]
-[The same radio.]
-[A NEW OPERATOR sits at the desk.]
-[The radio crackles.]
+NARRATOR: [The screen fades in.]
+NARRATOR: [The communications room.]
+NARRATOR: [Rain can be heard outside.]
+NARRATOR: [The same equipment.]
+NARRATOR: [The same desk.]
+NARRATOR: [The same radio.]
+NARRATOR: [A NEW OPERATOR sits at the desk.]
+NARRATOR: [The radio crackles.]
 NEW OPERATOR: Hello?
-[SHORT STATIC.]
 NEW OPERATOR: Verin? You there?
-[PAUSE.]
 VERIN: Yeah.
 VERIN: You there?
 NEW OPERATOR: Yeah.
 NEW OPERATOR: Sorry. First night.
 VERIN: You'll be fine.
-[SHORT PAUSE.]
 VERIN: I'll walk you through everything.
 VERIN: Your job tonight is pretty simple.
 VERIN: You'll be monitoring the assigned radio frequencies and looking out for anything that needs to be reported.
 NEW OPERATOR: And I just record anything important?
 VERIN: Exactly. It should be a simple job. You’ll be done before you know it.
-[BLACK SCREEN.]
+NARRATOR: [BLACK SCREEN.]
