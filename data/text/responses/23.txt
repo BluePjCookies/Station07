@@ -1,100 +1,42 @@
 TIME: 05:00
 CYRUS: It said six.
 VERIN: Yes.
-CYRUS: Six people huh?
+CYRUS: Six people before me?
 VERIN: That's what it said.
-CYRUS: It didn’t but you confirmed it. Six people before me...
-VERIN: You're making a connection.
-CYRUS: Because there is one.
-VERIN: Go on.
-CYRUS: Isaac was one of them.
+CYRUS: Isaac was one of them. There were five before him.
 VERIN: Yes.
-CYRUS: There were five before him.
-VERIN: Yes.
-CYRUS: And then me...
-CYRUS: Seven.
-VERIN: Seven. That's why it's Station 07...
-VERIN: Maybe.
-CYRUS: Don't. Don't give me another half-answer.
-VERIN: I'm not Cypher.
-CYRUS: You are. You've been doing it all night.
-VERIN: And Cypher,  you've been accepting them all night.
-CYRUS: Not anymore...
-CYRUS: I'm number seven.
-VERIN: Yes.
-CYRUS: What happened to the other six?
+CYRUS: And then me... Seven.
+VERIN: Seven. That's why it's Station 07. Maybe.
+CYRUS: Don't give me another half-answer. You've been doing it all night.
+VERIN: And you've been accepting them all night, Cypher.
+CYRUS: Not anymore. I'm number seven. What happened to the other six?
 VERIN: You know what happened to Isaac.
 CYRUS: I don't know what happened to the others.
 VERIN: Does that really matter, Cypher?
-CYRUS: STOP USING THAT NAME, YOU HAVE NO RIGHT TO USE THAT NAME. AND YES IT BLOODY MATTERS.
-VERIN: Oh I struck a nerve huh?
-CYRUS: Because if six people came here before me, and none of them are here now…
-CYRUS: Oh God...
-CYRUS: I'm going to die here.
+CYRUS: STOP USING THAT NAME! You have no right to use that name!
+VERIN: Oh. I struck a nerve.
+CYRUS: Six people came here before me, and none are here now... Oh God. I'm going to die here.
 VERIN: That's what you've decided?
 CYRUS: You knew.
 VERIN: I knew the risks.
-CYRUS: No.
-CYRUS: You knew.
-VERIN: There's a difference.
-CYRUS: Stop lying to me!
-VERIN: I'm not lying.
-CYRUS: Then tell me I'm wrong..
-CYRUS: Tell me I'm wrong, Verin.
+CYRUS: No. You knew. Tell me I'm wrong, Verin.
 VERIN: ...I can't.
-CYRUS: ...
-CYRUS: I don't want to die.
-CYRUS: I don't want to die here! I don't want to become some bloody number on a list! I just wanted a job, to help Ma. I finished my service. I thought I was finally done.
-CYRUS: ..And you sent me here. Knowing this could happen.
+CYRUS: I don't want to die here. I just wanted a job. To help Ma. I finished my service. I thought I was finally done.
+CYRUS: And you sent me here, knowing this could happen.
 VERIN: Yes.
 CYRUS: Why?
-VERIN: Because you were suitable, I told you.
-CYRUS: Stop saying that!
-VERIN: Why?
-CYRUS: Because I'm not a tool, I’m a human!
-VERIN: ..I never said you were.
-CYRUS: You don't have to. You sent six people here before me. You watched them disappear. And when you needed another one, you found me.
-CYRUS: I'm just the next one.
-VERIN: Yeap.
-CYRUS: How can you say that so calmly?
-VERIN: Because panicking doesn't change the situation.
-CYRUS: You don't care.
-VERIN: That's not true.
-CYRUS: Then what do you care about?..
-VERIN: Understanding it. Keep listening.
+VERIN: Because you were suitable.
+CYRUS: Stop saying that! I'm not a tool. I'm human!
+VERIN: I never said you were.
+CYRUS: You sent six people here, watched them disappear, then found me. I'm just the next one.
+VERIN: Yep.
+CYRUS: How can you say that so calmly? You don't care.
+VERIN: I care about understanding it. Keep listening.
 CYRUS: That's all you ever say.
-VERIN: Because it's what you're good at.
-CYRUS: And when I'm not useful anymore?...
-VERIN: You're asking the wrong question.
-CYRUS: Then what's the right one?
-VERIN: Why were you useful in the first place?
-CYRUS: ...
-CYRUS: You said my background made me useful.
-VERIN: It did.
-CYRUS: Because I was a Signals Operator.
-VERIN: Partly.
-CYRUS: Partly?
-VERIN: You know how to listen.
-CYRUS: So does everyone here.
-VERIN: Not like you.
-CYRUS: What does that mean?
-VERIN: You'll figure it out.
-CYRUS: You really think I'm going to keep doing this?
-VERIN: You're still listening.
-CYRUS: ...
-CYRUS: You know what? I don't believe anything you say anymore.
-VERIN: Good.
-CYRUS: Are you smiling?
-VERIN: I'm not.
-CYRUS: You sound like you're smiling.
-VERIN: Maybe I'm impressed.
-CYRUS: By what?
-VERIN: You finally stopped asking me what happened. You're figuring it out yourself.
-CYRUS: And?
-VERIN: And you're doing rather well.
-[LONG SILENCE.]
-CYRUS: Verin...
-VERIN: Yeah?
-CYRUS: If I'm number seven...
-CYRUS: ...what happens after seven?
-VERIN: You’re a smart kid, you can figure it out. Gosh what a shame.
+VERIN: Because it's what you're good at. You know how to listen.
+CYRUS: Because I was a Signals Operator?
+VERIN: Partly. Not like you. You'll figure it out.
+CYRUS: I don't believe anything you say anymore.
+VERIN: Good. You're finally figuring it out yourself.
+CYRUS: Verin... If I'm number seven... what happens after seven?
+VERIN: You're a smart kid. You can figure it out. Gosh, what a shame.

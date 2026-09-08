@@ -1,17 +1,5 @@
 VERIN: Good catch. That's something we need to know about. I'll forward it to the relevant team.
 CYRUS: Alright.
-VERIN: That's basically what you're looking for. Anything that could affect operations or requires someone to take action.
+VERIN: That's basically what you're looking for. Anything that could affect operations or requires someone to take action. Not everything you hear needs to come back to me.
 CYRUS: Understood.
 VERIN: Good. Let's try another one.
-CYRUS: Got it.
-VERIN: Oh, Cyrus, I forgot to mention something.
-CYRUS: Yeah?
-VERIN: Not everything you hear needs to come back to me.
-VERIN: I'm mainly interested in anything that requires someone to do something about it.
-CYRUS: So, problems?
-VERIN: Problems, changes to operations, anything that could affect communications or personnel.
-CYRUS: Got it.
-VERIN: Routine updates are fine to ignore. Central already receives most of those.
-CYRUS: Right. So I should focus on anything actionable.
-VERIN: Exactly.
-VERIN: Give it a scan.

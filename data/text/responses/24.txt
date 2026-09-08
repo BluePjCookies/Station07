@@ -1,78 +1,48 @@
 TIME: 05:30
-CYRUS: Verin, what agreement?
+CYRUS: Verin... what agreement?
 VERIN: That's an interesting question.
-CYRUS: What agreement were they talking about?
+CYRUS: No. No more of that. What agreement were they talking about?
 VERIN: I don't know completely.
-CYRUS: Then explain what you do know.
+CYRUS: Then tell me what you know. Please.
 VERIN: There are conditions.
 CYRUS: Conditions for what?
-VERIN: The observation.
-CYRUS: What kind of conditions?
-VERIN: Someone has to be here.
+VERIN: The observation. Someone has to be here.
 CYRUS: Why?
 VERIN: Because that's when it responds.
-CYRUS: So someone has to listen.
+CYRUS: So someone has to listen. That's what you did to the others?
 VERIN: Yes.
-CYRUS: And then what?
-VERIN: We continue observing.
-CYRUS: That's it?
+CYRUS: And then they disappeared.
+VERIN: We continued observing.
+CYRUS: That's it? That's all you can tell me?
 VERIN: That's what we know.
-CYRUS: No. That's what you've seen.
-CYRUS: There's a difference.
-VERIN: You're getting better at this. Maybe you should be sitting in my chair hahaha.
-CYRUS: I'm serious. What is the agreement actually?
-VERIN: We don't know.
-CYRUS: After all this time?
-VERIN: We're still learning.
-CYRUS: Then how do you know what I'm supposed to do?
+CYRUS: No... that's what you've seen. There's a difference.
+VERIN: You're getting better at this. Maybe you should be sitting in my chair.
+CYRUS: I'm not joking, Verin. I'm scared. What is the agreement?
+VERIN: We don't know. We're still learning.
+CYRUS: Then how the hell do you know what I'm supposed to do?
 VERIN: We know what happens when we follow the conditions.
-CYRUS: And what happens if I don't?
+CYRUS: And if I don't?
 VERIN: You can find out.
-CYRUS: That's not what I asked, you know what happens.
-VERIN: I know.
 CYRUS: What happens if I leave?
 VERIN: You can leave.
-CYRUS: Right now?
+CYRUS: ...Right now?
 VERIN: If you want.
 CYRUS: Then I'm leaving.
 VERIN: I wouldn't.
-CYRUS: Oh my gosh Verin, just spit it out, its disgusting what you are doing.
-VERIN: Because it already knows you...
-CYRUS: What?
-VERIN: It means leaving the station doesn't undo anything.
+CYRUS: Why?! Just tell me why!
+VERIN: Because it already knows you.
+CYRUS: ...What does that mean?
+VERIN: Leaving the station doesn't undo anything.
 CYRUS: So I'm trapped.
-VERIN: I didn't say that.
-CYRUS: Then what am I?
-VERIN: You're the operator.
-CYRUS: You’re not human, Verin, you know that?
-VERIN: What do you know about being human, I’ve outlived you.
-CYRUS: Wow. I’m going to prove you wrong. If there's an agreement, there has to be a way to break it.
-VERIN: Maybe.
-CYRUS: You're really not going to help me, are you?
-VERIN: I'm talking to you, aren't I?
-CYRUS: That's not helping.
-VERIN: You want me to tell you there's a way out.
-CYRUS: Yes.
-VERIN: I can't. 
-CYRUS: Why not?
-VERIN: Because I seriously don't know, If I knew, you think I’d risk the other 6.
-CYRUS: ...
-CYRUS: Then all this time… You've just been guessing.
-VERIN: Not guessing.
-CYRUS: Then what?
-VERIN: Observing.
-CYRUS: And assuming.
-VERIN: Sometimes those are the same thing.
-CYRUS: No. They're not.
-CYRUS: So this whole “agreement”... You don't even know if it actually exists.
-VERIN: We know something is happening.
-CYRUS: So you don’t know it exists.
+VERIN: I didn't say that. You're the operator.
+CYRUS: You're not human, Verin.
+VERIN: I've outlived you.
+CYRUS: ...Then I'll find a way out myself.
+VERIN: If there's a way.
+CYRUS: There has to be. You don't even know the rules.
 VERIN: No.
-CYRUS: …then maybe I don't have to play by your rules.
+CYRUS: Then maybe I don't have to follow them.
 VERIN: Maybe you don't.
 CYRUS: And if I don't?
 VERIN: You'll find out.
-CYRUS: You're enjoying this.
-VERIN: A little.
-CYRUS: You’re disgusting.
-VERIN: Just do your job.
+CYRUS: ...Good.
