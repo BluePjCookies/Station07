@@ -300,8 +300,8 @@
       </div>
 
       <div class="dial-row">
-        <div class="span-label">118.0 – 137.0 MHz &nbsp;·&nbsp; 19.0 MHz span</div>
-        <input type="range" id="freqSlider" min="118.0" max="137.0" step="0.1" value="118.0">
+        <div class="span-label">100.0 – 150.0 MHz &nbsp;·&nbsp; 50.0 MHz span</div>
+        <input type="range" id="freqSlider" min="100.0" max="150.0" step="0.1" value="118.0">
       </div>
 
       <div class="meter-label">Signal strength <span class="value" id="meterValue">0%</span></div>
@@ -408,7 +408,7 @@ His shift would run from <b>2300 to 0600.</b>
 <script>
 
 (function(){
-  const dev = false
+  const dev = true
   if(dev){
     document.getElementsByClassName("rig")[0].style.display = "block"
     game()
@@ -439,7 +439,7 @@ His shift would run from <b>2300 to 0600.</b>
   
 }())
 function game (){
-  const FREQ_MIN = 118.0, FREQ_MAX = 137.0, FREQ_STEP = 0.1;
+  const FREQ_MIN = 100.0, FREQ_MAX = 150.0, FREQ_STEP = 0.1;
 
   const STATIONLIST = [
     { id: 1, freq: 89.4,  bw: 0.35, text: "NUMBER GROUP: 4 7 1 9 2 — REPEAT — 4 7 1 9 2. STANDBY FOR FURTHER.",
@@ -456,7 +456,7 @@ function game (){
   const STATION_BANDWIDTH = 0.3; // constant across every station
   let STATIONS = []; // nothing broadcasts until setupTask() brings stations online
   let locked = true
-  let freq = 118;
+  let freq = 100;
   let catalogue = [];       // { id, freq, text, reply }
   let submittedCount = 0;
   let recordedCount = 0;
@@ -521,7 +521,7 @@ function game (){
     }
     wavePath.setAttribute('d', d);
   }
-  async function setupTask(taskid){
+  async function setupTask(transid){
     updateWave(0);
     let hydratedStations = [];
     let importantStation = null;
@@ -529,7 +529,10 @@ function game (){
     try{
       // /api/game/task/<task_number> returns a LIST of
       // { "frequency": <float>, "transmission_id": <int> } objects.
-      const freqList = await request(`/api/game/task/${taskid}`, 'GET');
+     
+      const freqList = await request(`/api/game/task/${currentTask}`, 'GET');
+      
+      
 
       // Hydrate each transmission_id into a full station object via
       // /api/game/transmission/<transmission_id>. Transmission.to_dict()
@@ -550,7 +553,7 @@ function game (){
 
       importantStation = hydratedStations.find(s => s.important) || null;
     } catch(e){
-      console.warn('Could not load task', taskid, e);
+      console.warn('Could not load task', currentTask, e);
      
     }
 
@@ -566,11 +569,16 @@ function game (){
       // The first line sets the shift clock for this task; the remaining
       // "sender: content" lines are the intro chat script.
       
-
-      await playScript(taskid);
+       if(transid == -1){
+        // game start
+        // artifically jumpstart game script
+        await playScript(1000);
+       } else {
+        await playScript(transid);
+       }
 
     } catch(e){
-      console.warn('Could not load scripted intro for task', taskid, e);
+      console.warn('Could not load scripted intro for task', transid, e);
     }
 
     // Script has finished (or failed to load) — stations go live and the
@@ -582,10 +590,10 @@ function game (){
   }
 
   // Plays each script line 2s apart, resolving once the last line has shown.
-  function playScript(taskId){
+  function playScript(transId){
     return new Promise(resolve => {
       
-      request(`/api/game/responses/${taskId}`, 'GET').then((data) => {
+      request(`/api/game/responses/${transId}`, 'GET').then((data) => {
         const lines = data.split("\n").map(line => line.trim())
         const [clockLine, ...scriptLines] = lines;
         console.log(lines)
@@ -601,7 +609,12 @@ function game (){
           chatMessage(script[lineNo].sender, script[lineNo].content);
           lineNo++;
           if(lineNo < script.length){
-            setTimeout(showNext, 2000);
+            if(dev == true){
+              setTimeout(showNext, 100);
+            } else {
+              setTimeout(showNext, 2000);
+            }
+            
           } else {
             resolve();
           }
@@ -751,7 +764,7 @@ function game (){
     line.className = 'log-entry';
     if(station.important){
       line.innerHTML = `<span class="tag" style="color:var(--line-bright)">CONFIRMED</span> — ${station.freq} MHz was the correct transmission.`;
-      
+      currentTask++;
       await setupTask(station.id)
     } else {
       playScript(station.id)
