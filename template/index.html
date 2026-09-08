@@ -751,9 +751,8 @@ function game (){
     line.className = 'log-entry';
     if(station.important){
       line.innerHTML = `<span class="tag" style="color:var(--line-bright)">CONFIRMED</span> — ${station.freq} MHz was the correct transmission.`;
-      await playScript(station.id)
-      currentTask++;
-      await setupTask(currentTask)
+      
+      await setupTask(station.id)
     } else {
       playScript(station.id)
       //line.innerHTML = `<span class="tag" style="color:var(--red)">WRONG SIGNAL</span> — ${station.freq} MHz wasn't the one control is after.`;
@@ -830,7 +829,7 @@ function game (){
   
   
   renderCatalogue();
-  setupTask(1);
+  setupTask(-1);
   requestAnimationFrame(render);
 }
 </script>
