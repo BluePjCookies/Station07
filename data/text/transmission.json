@@ -1,4 +1,10 @@
 {
+        "0" : {
+                "content": "Relay Three to Central. Routine maintenance complete. No faults detected.",
+                "task" : 0,
+                "important" : true,
+                "nature" : "Relevant operational communication"
+                },
         "1" : {
                 "content": "Relay Two to Central. Radio check. Signal strength is good. No issues to report.",
                 "task" : 1,
@@ -151,7 +157,7 @@
                 },
         "26" : {
                 "content": "Don't worry, Cyrus.[PAUSE] Where you're going... / [SHORT STATIC] / You can see your parents. / [TRANSMISSION ENDS]",
-                "task" : 8,
+                "task" : 14,
                 "important" : true,
                 "nature" : "Unknown transmission / Direct communication"
         }       

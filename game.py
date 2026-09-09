@@ -35,5 +35,4 @@ class Game:
 
 if __name__ == "__main__":
     game = Game()
-    print(game.get_transmission_from_id(4))
-    print(game.get_frequency_and_transmission_id(2))
+    print(game.get_frequency_and_transmission_id(13))

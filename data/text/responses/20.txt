@@ -1,60 +1,23 @@
 TIME: 04:00
-CYRUS: Verin. That was you.
-VERIN: Yes.
 CYRUS: Who was Isaac?
 VERIN: An operator.
-CYRUS: You were talking to him.
-VERIN: Yes.
-CYRUS: And he was hearing the same thing I'm hearing.
+CYRUS: He was hearing the same thing I'm hearing.
 VERIN: Not exactly.
 CYRUS: What do you mean, not exactly?
-VERIN: It was different then.
-CYRUS: Different how?
-VERIN: It didn't know as much.
-CYRUS: You keep on saying, “it” what is “it”?
-[SILENCE.]
-CYRUS: There you go again.
-VERIN: Cyrus—
-CYRUS: You know what this is.
-VERIN: I know enough.
-CYRUS: Then why didn't you tell me?
-VERIN: Because you wouldn't have believed me.
-CYRUS: Try me.
+VERIN: It was different then. It didn't know as much.
+CYRUS: You keep on saying, “it” what is “it”?..
+VERIN: You ask a lot of questions for someone who's been here less than one night.
+CYRUS: Maybe because nobody's telling me anything!
 VERIN: You want the truth?
 CYRUS: Yes.
 VERIN: Fine. It has never tried to sow distrust before. This is new.
 CYRUS: You still haven’t told me what “it” is.
-VERIN: You ask a lot of questions for someone who's been here less than one night.
-CYRUS: Maybe because nobody's telling me anything!
-VERIN: Nobody?
-[SHORT PAUSE.]
-VERIN: I've been telling you plenty.
-CYRUS: You've been lying to me.
-VERIN: Careful.
-CYRUS: Why? Did I hit a nerve?
-VERIN: You just don't understand what you're dealing with.
+VERIN: Careful. You don't understand what you're dealing with.
 CYRUS: Then explain it!
-VERIN: I just did. 
-CYRUS: No, you didn't!
-VERIN: Cyrus, listen to me.
-VERIN: Whatever you think you've figured out, you're still missing the important part.
-CYRUS: Which is?
-VERIN: You're still listening.
-[LONG SILENCE.]
-CYRUS: What is that supposed to mean?
 VERIN: Keep monitoring.
-CYRUS: Verin—
-VERIN: You wanted the truth.
-VERIN: That's the truth you're getting tonight.
-[SILENCE.]
-CYRUS: What happened to Isaac?
-[LONG PAUSE.]
+CYRUS: Verin— What happened to Isaac?...
 VERIN: That's not relevant to your assignment.
-CYRUS: Tell me what happened to him.
-VERIN: No.
 CYRUS: Why?
-VERIN: Because you're still here.
-[SILENCE.]
-CYRUS: What…
+VERIN: Because you're still here...
 VERIN: Continue scanning, we can’t lose it.
 

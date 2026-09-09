@@ -1,9 +1,7 @@
-TIME: 02:15
-VERIN: Good catch. Reduced coverage could affect communications in that sector.
-VERIN: I'll pass it along.
+TIME: 01:43
+VERIN: Routine inspection. Everything looks normal there.
 CYRUS: Alright.
-VERIN: You're getting better at spotting the things that actually matter.
-CYRUS: Yeah, I think I'm starting to get it.
-VERIN: Good.
+VERIN: Nothing you need to worry about.
+CYRUS: Got it.
 VERIN: Keep monitoring.
-CYRUS: Will do.
+

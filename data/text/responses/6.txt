@@ -1,4 +1,3 @@
 TIME: 23:45
 VERIN: That's a personnel update. Useful information, but nothing that requires action from us.
-CYRUS: Alright.
 VERIN: Keep going.

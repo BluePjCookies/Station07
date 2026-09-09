@@ -1,267 +1,115 @@
 TIME: 06:00
-[Silence.]
-CYRUS: What the hell was that?
-[VERIN DOES NOT RESPOND.]
-CYRUS: Verin.
-VERIN: You did well, Cyrus.
-CYRUS: ...
-VERIN: Really well.
+CYRUS: What the hell was that? Verin.
+VERIN: You did well, Cyrus. Really well.
 CYRUS: Don't congratulate me.
-VERIN: I'm not congratulating you.
-CYRUS: Then what are you doing?
-VERIN: Acknowledging the results.
-CYRUS: The results?
-VERIN: We confirmed something tonight.
-CYRUS: What?
-VERIN: Time.
-CYRUS: ...
-VERIN: You remember the timestamp you found earlier?
-CYRUS: The 0200 message.
-VERIN: Yes.
-CYRUS: You said it was a synchronisation error.
-VERIN: I said it was probably a synchronisation error.
+VERIN: I'm acknowledging the results.
+CYRUS: What results?
+VERIN: We confirmed something tonight. Time.
+CYRUS: The 0200 message? You said it was probably a synchronisation error.
+VERIN: I said probably.
 CYRUS: You knew.
-VERIN: We suspected, now thanks to you, we confirmed it. It can interfere with time.
+VERIN: We suspected. Now, thanks to you, we know. It can interfere with time.
 CYRUS: And you're telling me this now?
-VERIN: You weren't ready to hear it before.
+VERIN: You weren't ready to hear it.
 CYRUS: You mean you didn't want to tell me.
 VERIN: That too.
 CYRUS: Jesus Christ.
-VERIN: There's something else.
-CYRUS: What?
-VERIN: It can sow distrust.
-CYRUS: ...
-VERIN: It did that tonight, it never did that.
-CYRUS: But at what cost? I was losing my mind.
-VERIN: You weren't losing your mind.
+VERIN: There's something else. It can sow distrust.
+CYRUS: It did that tonight. I thought I was losing my mind.
+VERIN: You weren't.
 CYRUS: I thought I was going to die.
-VERIN: You are.
-[SILENCE.]
-CYRUS: How can you even… You are a piece of nothing you know that? There’s no point of you existing.
-[SHORT PAUSE.]
-VERIN: Careful.
-CYRUS: No. You be careful.
-CYRUS: You've been lying to me all night.
+VERIN: You are...
+CYRUS: How can you say that? You've lied to me all night.
 VERIN: Have I?
-CYRUS: Yes.
-VERIN: Then tell me one thing I lied about.
-CYRUS: The timestamps.
-VERIN: I said it was probably a synchronisation error.
-CYRUS: You knew it wasn't.
-VERIN: I suspected it wasn't.
-CYRUS: The agreement.
-VERIN: We don't know if there ever was one.
-CYRUS: The other operators.
-VERIN: I never told you they were safe.
-CYRUS: You kept saying you didn't know! 
-VERIN: Sometimes I didn't.
+CYRUS: The timestamps. The agreement. The other operators. Every time I got close, you gave me half an answer.
+VERIN: Sometimes I didn't know.
 CYRUS: And when you did?
-[SHORT PAUSE.]
 VERIN: I let you keep looking.
 CYRUS: Why?
 VERIN: Because you were doing so well.
 CYRUS: You think this is a game?
-VERIN: No.
-CYRUS: Then why the hell are you talking like this?
-VERIN: Because you're finally angry.
-CYRUS: What's that supposed to mean?
-VERIN: It means I've been waiting for you to stop asking politely.
+VERIN: No. I think you're finally angry.
+CYRUS: What does that mean?
+VERIN: I've been waiting for you to stop asking politely.
 CYRUS: Screw you.
-[LONG SILENCE.]
 VERIN: There he is.
 CYRUS: What?
-VERIN: Cyrus.
-VERIN: The clever one. The one who figured out the timestamps. The one who noticed the inconsistencies. The one who connected the operators. The one who decided there had to be a loophole.
-[SHORT PAUSE.]
-VERIN: You were very proud of yourself.
+VERIN: Cyrus. The clever one. The one who noticed the timestamps, the inconsistencies, the operators. The one who thought there had to be a loophole.
 CYRUS: I was trying to survive.
 VERIN: Of course.
-CYRUS: You think I'm stupid?
-VERIN: No. 
-CYRUS: Then what?
-VERIN: You think being clever means you're in control.
-[SILENCE.]
 CYRUS: I figured out what you were hiding.
 VERIN: You figured out what I allowed you to find.
-CYRUS: Bullshit. I figured out Station 07.
-VERIN: Partly.
-CYRUS: The operators.
-VERIN: Partly.
-CYRUS: The agreement.
-VERIN: You don't even know if the agreement exists.
-CYRUS: The entity.
-VERIN: You don't understand it.
-CYRUS: I know more than I did when I walked in.
-VERIN: I guess that’s true.
-CYRUS: Then I was right.
-VERIN: About what?
-CYRUS: That you were hiding something.
-VERIN: You were.
-CYRUS: And that I couldn't trust you.
+CYRUS: Bullshit. Station 07. The operators. The agreement. The entity.
+VERIN: Partly. You still don't understand it.
+CYRUS: I know enough to know I couldn't trust you.
 VERIN: Correct.
-CYRUS: So I was right.
-VERIN: About that, yes. But you’re not in control, and you still don’t understand.
-CYRUS: What?
-VERIN: You thought tonight was about finding the truth.
+CYRUS: So what was tonight actually about?
+VERIN: You thought it was about finding the truth.
 CYRUS: It was.
-VERIN: No.
-VERIN: Tonight was about seeing what you'd do when the truth started finding you.
-[LONG SILENCE.]
+VERIN: No. It was about seeing what you'd do when the truth started finding you.
 CYRUS: Why did you keep me here?
-[SHORT PAUSE.]
 VERIN: Because we weren't finished.
-CYRUS: You already got your data, and that was long ago.
+CYRUS: You already got your data.
 VERIN: Not all of it.
-CYRUS: You confirmed it can warp time. You confirmed it can manipulate people.
-VERIN: Yes.
-CYRUS: You got what you wanted.
-VERIN: No.
-CYRUS: Then what else did you want?
-[LONG PAUSE.]
+CYRUS: You confirmed it can warp time and manipulate people. What else do you want?
 VERIN: You.
 CYRUS: ...
 VERIN: I wanted to see what it would do to someone who kept listening.
 CYRUS: You used me.
 VERIN: Yes.
-CYRUS: And you just admit it?
-VERIN: Why wouldn't I, haven’t we established that I don’t lie?
-CYRUS: Because I'm a human being!
+CYRUS: And you don't even care.
+VERIN: I care about the work.
+CYRUS: That's not the same thing. I wanted to go home. I wanted my family.
 VERIN: I know.
-CYRUS: Then act like it!
-VERIN: You're the one who wanted the truth.
-CYRUS: I wanted to go home!
-VERIN: I know.
-CYRUS: I wanted to see my family!
-VERIN: I know.
-CYRUS: I wanted my life back!
-VERIN: I know.
-CYRUS: Then why didn't you let me leave?!
-[LONG SILENCE.]
-VERIN: Because watching you try was useful.
-CYRUS: ...
-VERIN: And interesting.
+CYRUS: Then why didn't you let me leave?
+VERIN: Watching you try was useful. And interesting.
 CYRUS: You're sick.
 VERIN: Maybe.
-CYRUS: You watched me panic. You watched me figure things out. You watched me break.
-VERIN: You haven't broken yet.
-[SILENCE.]
-CYRUS: ...
-VERIN: That's what makes you interesting.
 CYRUS: I hate you.
 VERIN: I know.
 CYRUS: You think you're better than me.
-VERIN: No.
-VERIN: I think you made the mistake of thinking you were better than this.
-CYRUS: What does that even mean?
-VERIN: You came here thinking you were the clever one.
-VERIN: You thought you could listen carefully enough, ask enough questions, connect enough dots and eventually you'd become the one holding the answers.
-[SHORT PAUSE.]
-VERIN: But you were never holding anything.
+VERIN: No. You made the mistake of thinking you were better than this.
+CYRUS: What does that mean?
+VERIN: You thought if you listened carefully enough, asked enough questions, connected enough dots, you'd eventually hold the answers. But you were never holding anything.
 CYRUS: ...
 VERIN: You were being led.
 CYRUS: By you?
-VERIN: Not always.
-CYRUS: Then what else?
-[VERY LONG SILENCE.]
-VERIN: Yourself, you were curious, you stayed. You knew it was already becoming weird, before “it” decided to show itself. Before “it” identified you, no but you stayed. Because a part of you knows that as dangerous as it was, you wanted to know. You are just like us, you want control.
+VERIN: Not always. By yourself. You knew it was dangerous. You stayed anyway. You wanted to know. You wanted control.
 CYRUS: ...
-VERIN: Quiet? I’d use your time left if I was you.
+VERIN: I'd use your time left if I were you.
 CYRUS: You really don't care, do you?
 VERIN: I care about the work.
-CYRUS: That's not the same thing.
-VERIN: No.
-CYRUS: I thought you were supposed to be helping me.
+CYRUS: I thought you were helping me.
 VERIN: I was.
 CYRUS: You call this helping?
-VERIN: You wanted answers.
-CYRUS: And you wanted a test subject.
-VERIN: Both can be true.
-[SILENCE.]
-CYRUS: ...
-CYRUS: You know what?
-VERIN: What?
-CYRUS: I don't believe anything you say anymore.
-[SHORT PAUSE.]
+VERIN: You wanted answers. I wanted a test subject. Both can be true.
+CYRUS: ...I don't believe anything you say anymore.
 VERIN: Took you long enough.
-CYRUS: ...
-VERIN: Now you're finally thinking for yourself.
-CYRUS: Don't patronise me.
-VERIN: I'm not.
-CYRUS: I still want to go home.
-VERIN: I know.
-CYRUS: I want to see my parents.
-[SHORT PAUSE.]
-CYRUS: I just wanted a normal life.
-CYRUS: I finished my service.
-CYRUS: I got a job.
-CYRUS: I thought that was it.
-CYRUS: I thought I was finally done.
-[VERIN REMAINS SILENT.]
-CYRUS: Say something.
-VERIN: What do you want me to say?
-CYRUS: Tell me I'm going home.
-VERIN: I can't.
-CYRUS: Tell me this isn't happening.
-VERIN: I can't.
-CYRUS: Tell me there's a way out.
-[LONG SILENCE.]
-VERIN: I don't know.
-CYRUS: ...
-CYRUS: You don't know.
-VERIN: No.
-CYRUS: After everything you've told me tonight...
-VERIN: I told you what I know.
-CYRUS: No.
-CYRUS: You told me what you wanted me to know.
-[SHORT PAUSE.]
-VERIN: Maybe.
-CYRUS: Verin...
-VERIN: Yeah?
-CYRUS: Before I go, why did you keep me in suspense?
-VERIN: What?
-CYRUS: You knew something was going to happen. You knew there was something here. You knew what happened to the others. You knew I was selected before I even applied. And every time I asked, you said you didn't know. Why?
-[LONG PAUSE.]
+CYRUS: Then all this time, you were just watching me.
+VERIN: I was observing.
+CYRUS: You knew something was going to happen. You knew about the others. You knew I was selected before I even applied. Why keep me here?
 VERIN: Because I wanted to see what else you could discover. We want to know more.
-CYRUS: So you just left me here as bait.
+CYRUS: So I was bait.
 VERIN: I wouldn't put it quite like that.
-CYRUS: Then what would you call it?
-[SHORT PAUSE.]
+CYRUS: What would you call it?
 VERIN: Research.
 CYRUS: You're disgusting.
 VERIN: Maybe.
-CYRUS: And the whole time you were just watching.
 CYRUS: You could've pulled me out.
 VERIN: Who doesn't like playing with their food for a bit?
-[SILENCE.]
-CYRUS: ...
-CYRUS: You're talking about me.
+CYRUS: ...You're talking about me.
 VERIN: I'm talking about it.
-CYRUS: You really are a psychopath.
-VERIN: Perhaps.
-[LONG PAUSE.]
-VERIN: But I think we've learned enough tonight.
+CYRUS: You're a psychopath.
+VERIN: Perhaps. But we've learned enough tonight.
 CYRUS: What does that mean?
-VERIN: It means you did your job.
-CYRUS: My job?
-VERIN: You listened.
-CYRUS: ...
-VERIN: You observed.
-VERIN: You questioned.
-VERIN: You found things we hadn't found before.
-VERIN: You gave us exactly what we needed.
+VERIN: You did your job. You listened. You observed. You questioned. You found things we hadn't. You gave us exactly what we needed.
 CYRUS: And now?
-[SHORT PAUSE.]
 VERIN: Now we have the edge.
 CYRUS: For what?
-VERIN: Everything that comes after this.
-CYRUS: ...
-VERIN: The character of warfare will change. And we'll be ready for it.
-[LONG SILENCE.]
+VERIN: Everything that comes after this. The character of warfare will change. We'll be ready.
 CYRUS: I hate you.
 VERIN: You said that already.
 CYRUS: I hope you burn for this.
-VERIN: Maybe someday.
-[SHORT PAUSE.]
-VERIN: But not tonight. This was really fun, your my favourite number 7, Cypher.
-CYRUS: What?
+VERIN: Maybe someday. But not tonight. This was really fun. You're my favourite number seven, Cypher.
+CYRUS: ...What?
 VERIN: I think it has one last message for you.
