@@ -20,4 +20,3 @@ VERIN: That's not relevant to your assignment.
 CYRUS: Why?
 VERIN: Because you're still here...
 VERIN: Continue scanning, we can’t lose it.
-
