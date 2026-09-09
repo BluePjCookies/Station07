@@ -11,8 +11,6 @@ NARRATOR: [The radio crackles.]
 NEW OPERATOR: Hello?
 NEW OPERATOR: Verin? You there?
 VERIN: Yeah.
-VERIN: You there?
-NEW OPERATOR: Yeah.
 NEW OPERATOR: Sorry. First night.
 VERIN: You'll be fine.
 VERIN: I'll walk you through everything.
@@ -20,4 +18,3 @@ VERIN: Your job tonight is pretty simple.
 VERIN: You'll be monitoring the assigned radio frequencies and looking out for anything that needs to be reported.
 NEW OPERATOR: And I just record anything important?
 VERIN: Exactly. It should be a simple job. You’ll be done before you know it.
-NARRATOR: [BLACK SCREEN.]

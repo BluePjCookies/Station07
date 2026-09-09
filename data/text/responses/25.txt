@@ -65,8 +65,6 @@ CYRUS: Then why didn't you let me leave?
 VERIN: Watching you try was useful. And interesting.
 CYRUS: You're sick.
 VERIN: Maybe.
-CYRUS: You watched me panic.
-VERIN: You haven't broken yet.
 CYRUS: I hate you.
 VERIN: I know.
 CYRUS: You think you're better than me.
@@ -87,13 +85,6 @@ CYRUS: You call this helping?
 VERIN: You wanted answers. I wanted a test subject. Both can be true.
 CYRUS: ...I don't believe anything you say anymore.
 VERIN: Took you long enough.
-CYRUS: I still want to go home. I want to see my parents. I just wanted a normal life. I finished my service. I got a job. I thought I was finally done.
-CYRUS: Tell me I'm going home.
-VERIN: I can't.
-CYRUS: Tell me there's a way out.
-VERIN: I don't know.
-CYRUS: ...You don't know.
-VERIN: No.
 CYRUS: Then all this time, you were just watching me.
 VERIN: I was observing.
 CYRUS: You knew something was going to happen. You knew about the others. You knew I was selected before I even applied. Why keep me here?

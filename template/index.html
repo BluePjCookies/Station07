@@ -346,6 +346,17 @@
   .stage {
     display: none;
   }
+  #stage0 {
+    width: 100%;
+  }
+  #stage0 button {
+    margin: auto;
+    width: 30vw;
+    height: 10vh;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+  }
   .rig {
     display: none;
     margin: auto;
@@ -355,6 +366,21 @@
     width: 80vw
   }
 }
+.flicker-text {
+  animation: flicker 1.5s infinite;
+}
+
+@keyframes flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    opacity: 1;
+  }
+  20%, 22%, 24%, 55% {
+    opacity: 0.1;
+  }
+}
+#end {
+  display: none;
+}
 </style>
 <div class="shift-overlay" id="shiftOverlay">
   <h1>END OF SHIFT — 06:00</h1>
@@ -363,6 +389,9 @@
   <button id="btnNewShift">Start next shift</button>
 </div>
 <div class="intro-overlay">
+  <div id="stage0">
+    <button id="button">Play Game</button>
+  </div>
   <div id="stage1" class="stage">
     <h1>SENTINEL COMMUNICATIONS DIRECTORATE</h1>
     <h3>REMOTE OPERATIONS DIVISION</h3>
@@ -402,13 +431,22 @@ His shift would run from <b>2300 to 0600.</b>
     <h2>Station 07</h2>
     <h3>Shift Commencement</h3>
   </div>
+  <div id="end" class="flicker-text">
+    <h1>FREQUENCY</h1>
+  </div>
 
 </div>
 </div>
 <script>
-
+let stageAudio;
 (function(){
-  const dev = true
+
+  document.getElementById("button").addEventListener("click", () => {
+    startGame()
+  })
+}())
+function startGame(){
+  const dev = false
   if(dev){
     document.getElementsByClassName("rig")[0].style.display = "block"
     game()
@@ -418,12 +456,23 @@ His shift would run from <b>2300 to 0600.</b>
   const stages = document.getElementsByClassName("stage")
   let i = 0
   let prev;
+  stageAudio = new Audio("/data/audio/intro2.mp3")
+  const staticAudio = new Audio("/data/audio/static.mp3")
+  document.getElementById("stage0").style.display = "none";
+  stageAudio.play()
+  
+  
+  
   let stageTimer = setInterval(() => {
     
     if(i == 5){
       setTimeout(() => {
+
+        stageAudio.pause()
+        staticAudio.loop = true
+        staticAudio.play()
         document.getElementsByClassName("rig")[0].style.display = "block"
-  
+        
         game()
         clearTimeout(stageTimer)
         stages[i-1].style.display = "none";
@@ -437,7 +486,7 @@ His shift would run from <b>2300 to 0600.</b>
     i++;
   }, 5000)
   
-}())
+}
 function game (){
   const FREQ_MIN = 100.0, FREQ_MAX = 150.0, FREQ_STEP = 0.1;
 
@@ -465,6 +514,7 @@ function game (){
   let shiftMinutes = 22*60; // 10:00 PM
   let shiftEnded = false;
   let currentTask = 0;
+  let scrambleTimer = null;
   const freqSlider   = document.getElementById('freqSlider');
   const freqReadout  = document.getElementById('freqReadout');
   const meterFill    = document.getElementById('meterFill');
@@ -484,7 +534,7 @@ function game (){
   const shiftOverlay = document.getElementById('shiftOverlay');
   const shiftSummary = document.getElementById('shiftSummary');
   const shiftStatusEl= document.getElementById('shiftStatus');
-  
+  const endStage = document.getElementById('end')
  async function request(path, method = "GET", body = null){
     const res = await fetch(path, {
         method: method,
@@ -505,6 +555,7 @@ function game (){
     }
     const noise = Math.random()*3;
     return { strength: Math.min(100, best + noise), station: best > 40 ? bestStation : null };
+   // return { strength: Math.min(100, best), station: best > 40 ? bestStation : null };
   }
 
   function updateWave(strength){
@@ -531,14 +582,6 @@ function game (){
       // { "frequency": <float>, "transmission_id": <int> } objects.
      
       const freqList = await request(`/api/game/task/${currentTask}`, 'GET');
-      
-      
-
-      // Hydrate each transmission_id into a full station object via
-      // /api/game/transmission/<transmission_id>. Transmission.to_dict()
-      // gives us "content" (the decoded text) and "important" (whether
-      // this is the real target vs. a decoy). Bandwidth is constant for
-      // every station, so it's not part of the payload.
       hydratedStations = await Promise.all((freqList || []).map(async (entry) => {
         const transmissionId = entry.transmission_id ?? entry['transmission id'];
         const detail = await request(`/api/game/transmission/${transmissionId}`, 'GET');
@@ -610,11 +653,28 @@ function game (){
           lineNo++;
           if(lineNo < script.length){
             
-              setTimeout(showNext, 200);
+              setTimeout(showNext, 2000);
             
             
           } else {
-            resolve();
+            
+            
+            if(transId == 26){
+              stageAudio.play()
+              setTimeout(() => {
+                
+                document.getElementsByClassName("rig")[0].style.display = "none";
+                setTimeout(() => {
+                  endStage.style.display = "block";
+                }, 1500)
+                   
+              }, 2500)
+              
+              
+            } else {
+              resolve();
+            }
+            
           }
         };
         showNext();
@@ -624,30 +684,39 @@ function game (){
   }
 
  
-  function playAudio(station){
-    const audio = new Audio(`/data/audio/${station.id}.m4a`)
-    audio.play()
-    const timer = setInterval(() => {
-      txBody.textContent = scrambled(station.text);
-    }, 160)
-    audio.addEventListener('ended', () => {
-      clearInterval(timer)
-      txHead.textContent = 'TRANSMISSION RECEIVED';
-      txBody.textContent = station.text;
-      txState = 'ready';
-      btnRecord.disabled = false; btnIgnore.disabled = false;
-      // console.log("Playback completed.");
-    });
+ function playAudio(station){
+
     let decodeTimer = null;
     lockedStation = station;
     txState = 'decoding';
     txPanel.classList.add('show');
     txHead.textContent = 'DECODING…';
-    
+    if(scrambleTimer) clearInterval(scrambleTimer); // clear any stale one, safely
+    scrambleTimer = setInterval(() => {
+      txBody.textContent = scrambled(station.text);
+    }, 160)
     btnRecord.disabled = true; btnIgnore.disabled = true;
+    audio = new Audio(`/data/audio/${station.id}.mp3`)
+    audio.addEventListener("ended", () => {
+      clearInterval(scrambleTimer)
+      txHead.textContent = 'TRANSMISSION RECEIVED';
+      txBody.textContent = station.text;
+      txState = 'ready';
+      btnRecord.disabled = false; btnIgnore.disabled = false;
+      audio.volume = 600
+    })
+    audio.play()
+    
 
+    
+
+    
+    
+    
+    return false
   }
-  
+  let audio;
+  let audioPlaying = false
   function render(){
     if(shiftEnded) return;
     freqReadout.innerHTML = freq.toFixed(1) + '<small>MHz</small>';
@@ -664,14 +733,26 @@ function game (){
         statusChip.textContent = 'LOCKED';
         statusChip.className = 'status-chip locked';
         if(txState === 'idle' && station){
-         playAudio(station)
+          if(!audioPlaying){
+            playAudio(station)
+            audioPlaying = true
+          }
           
         }
       } else if(strength > 40){
+        if (audio && audioPlaying == true) {
+          audio.pause()
+          audioPlaying = false
+        }
+        
         statusChip.textContent = 'SIGNAL DETECTED';
         statusChip.className = 'status-chip detected';
         if(txState !== 'idle') resetTx();
       } else {
+        if (audio && audioPlaying == true) {
+          audio.pause()
+          audioPlaying = false
+        }
         statusChip.textContent = 'SCANNING';
         statusChip.className = 'status-chip';
         if(txState !== 'idle') resetTx();
@@ -689,7 +770,7 @@ function game (){
   }
 
   function resetTx(){
-    clearInterval(decodeTimer);
+    clearInterval(scrambleTimer);
     txState = 'idle';
     lockedStation = null;
     txPanel.classList.remove('show');
@@ -699,11 +780,14 @@ function game (){
   btnRecord.addEventListener('click', ()=>{
     // record button
     if(txState !== 'ready' || !lockedStation) return;
+    STATIONS = STATIONS.filter(s => s.id !== lockedStation.id);
     recordedCount++;
+
     catalogue.push({
       id: 'c'+Date.now()+Math.floor(Math.random()*999),
       station: { ...lockedStation } // snapshot: id, freq, bw, text, reply
     });
+
     renderCatalogue();
     resetTx();
   });
@@ -803,16 +887,6 @@ function game (){
     if(e.key === 'ArrowLeft'){ setFreq(freq - FREQ_STEP); e.preventDefault(); }
   });
 
-  
-
-  
-
-  function tickClock(){
-    if(shiftEnded) return;
-    shiftMinutes += 2;
-    clockEl.textContent = formatClock(shiftMinutes);
-  }
-
   function endShift(){
     shiftEnded = true;
     shiftStatusEl.textContent = 'SHIFT ENDED';
@@ -838,7 +912,7 @@ function game (){
   
   
   renderCatalogue();
-  setupTask(-1);
+  setupTask(26);
   requestAnimationFrame(render);
 }
 </script>
