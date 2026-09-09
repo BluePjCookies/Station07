@@ -74,13 +74,13 @@
         "12" : {
                 "content": "Relay Five confirms the 0200 maintenance check has been completed and the equipment has been returned to normal operation.",
                 "task" : 4,
-                "important" : false,
+                "important" : true,
                 "nature" : "Timestamp inconsistency"
                 },
         "13" : {
-                "content": "Relay Seven reports reduced coverage following a temporary loss of the primary communications link at Sector Two.",
+                "content": "Relay Seven reports maintained coverage of the use of the primary communications link at Sector Two",
                 "task" : 4,
-                "important" : true,
+                "important" : false,
                 "nature" : "Operational issue"
                 },
         "14" : {

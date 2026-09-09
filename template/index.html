@@ -438,7 +438,9 @@ His shift would run from <b>2300 to 0600.</b>
 </div>
 </div>
 <script>
+let chatTimeout = 1000
 let stageAudio;
+const startTask = -1
 (function(){
 
   document.getElementById("button").addEventListener("click", () => {
@@ -448,6 +450,7 @@ let stageAudio;
 function startGame(){
   const dev = false
   if(dev){
+    chatTimeout = 1
     document.getElementsByClassName("rig")[0].style.display = "block"
     game()
     return
@@ -843,6 +846,8 @@ function game (){
     const line = document.createElement('div');
     line.className = 'log-entry';
     if(station.important){
+      catalogue = []
+      renderCatalogue()
       line.innerHTML = `<span class="tag" style="color:var(--line-bright)">CONFIRMED</span> — ${station.freq} MHz was the correct transmission.`;
       currentTask++;
       await setupTask(station.id)
