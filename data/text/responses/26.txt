@@ -1,5 +1,4 @@
 TIME: 23:00
-STATION 08
 NARRATOR: [The screen fades in.]
 NARRATOR: [The communications room.]
 NARRATOR: [Rain can be heard outside.]
